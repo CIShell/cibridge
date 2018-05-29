@@ -1,0 +1,306 @@
+
+# GraphQL root schema
+schema {
+	query: Query
+	mutation: Mutation
+	subscription: Subscription
+}
+
+type Query {
+# Framework API
+	getAlgorithms(filter: AlgorithmFilter): [Algorithm!]
+	validateData(algorithmId: ID!, dataRefIds: [ID]!): String
+	downloadData(dataRefId: ID!): File
+
+# Data Conversion
+	findConverters(dataRefId: ID!, outFormat: String!): [AlgorithmRef!]!
+	findConvertersByFormat(inFormat: String!, outFormat: String!): [AlgorithmRef!]!
+
+# GUI Builder
+	getNotifications(filter: NotificationFilter!): [Notification!]
+	isClosed(notificationId: ID!): Boolean
+
+# Data Manager
+	getData(filter: DataFilter): [DataRef]
+	getSelectedData: [DataRef!]
+
+# Scheduler
+	getScheduledAlgorithms: [AlgorithmRef!]
+	isSchedulerEmpty: Boolean
+	isSchedulerRunning: Boolean
+	getSchedulerQueueWaiting: Int
+
+# Logging
+	getLogs(filter: LogFilter): [Log!]!
+
+# Preferences
+	# Currently in CIShell Spec, but not really used.
+	# getUserPreferences(algorithm: Algorithm): Preferences
+	# getSystemPreferences(algorithm: Algorithm): Preferences
+	# getSystemPreferences: Preferences
+}
+
+
+type Mutation {
+# Framework API
+	uploadData(file: File!, format: String): DataRef
+	createAlgorithm(algorithmId: ID!, dataRefIds: [ID!], params: [PropertyInput!]): AlgorithmRef
+	refreshAlgorithmRef(algorithmRefId: ID): AlgorithmRef
+	setAlgorithmCancelled(algorithmRefId: ID!, bool: Boolean): AlgorithmRef
+	setAlgorithmPaused(algorithmRefId: ID!, bool: Boolean): AlgorithmRef
+
+# Data Conversion
+	convertData(dataRefId: ID!, outFormat: String!): DataRef
+	removeData(dataRefId: ID): Boolean
+	setLabel(dataRefId: ID, label: String): Boolean
+	setSelectedData(dataRefIds: [ID!]): Void
+
+# GUI Builder
+	setNotificationResponse(notificationId: ID, response: [PropertyInput!]): Void
+	closeNotification(notificationId: ID): Boolean
+
+# Scheduler
+	clearScheduler: Void
+	scheduleAlgorithm(algorithmRefId: ID!, time: Time!): Void
+	rescheduleAlgorithm(algorithmRefId: ID!, time: Time!): Void
+	runAlgorithmNow(algorithmRefId: ID!): Void
+	setSchedulerRunning(running: Boolean): Void
+	unscheduleAlgorithm(algorithmRefId: ID!): Void
+}
+
+
+type Subscription {
+# Framework API
+	algorithmAdded: Algorithm
+	algorithmRemoved: Algorithm
+	algorithmRefUpdated(filter: AlgorithmFilter): AlgorithmRef
+
+# GUI Builder
+	newNotification: Notification
+
+# Data Manager
+	dataRefUpdated(filter: DataFilter): DataRef
+	dataAdded(filter: DataFilter): DataRef
+	dataLabelChanged(filter: DataFilter): DataRef
+	dataRemoved(filter: DataFilter): DataRef
+	dataSelected: [DataRef!]
+
+# Scheduler
+	algorithmError(filter: AlgorithmFilter): AlgorithmRef
+	algorithmStarted(filter: AlgorithmFilter): AlgorithmRef
+	algorithmFinished(filter: AlgorithmFilter): AlgorithmRef
+	algorithmScheduled(filter: AlgorithmFilter): AlgorithmRef
+	algorithmRescheduled(filter: AlgorithmFilter): AlgorithmRef
+	algorithmUnscheduled(filter: AlgorithmFilter): AlgorithmRef
+	schedulerCleared: Void
+	schedulerRunStateChanged: Boolean
+
+# Log
+	log(filter: LogFilter): Log
+	errorLog(filter: LogFilter): Log
+	warningLog(filter: LogFilter): Log
+	infoLog(filter: LogFilter): Log
+	debugLog(filter: LogFilter): Log
+}
+
+# input types
+input AlgorithmFilter {
+	id: ID
+	state: AlgorithmState
+	inputDataRefIds: [ID!]
+	inputFormat: [String!]
+	outputFormat: [String!]
+	limit: Int
+	offset: Int
+}
+
+input DataFilter {
+	id: ID
+	format: String
+}
+
+input NotificationFilter {
+	id: ID
+	limit: Int
+	offset: Int
+}
+
+enum LogLevel {
+	DEBUG
+	ERROR
+	INFO
+	WARNING
+}
+
+input LogFilter {
+	logLevel: [LogLevel!]
+	logsSince: Time
+	limit: Int
+	offset: Int
+}
+
+# scalar types
+scalar ID
+scalar Value
+scalar Time
+scalar File
+scalar Void
+
+# type PageInfo {
+# 	hasNextPage: Boolean!
+# 	hasPreviousPage: Boolean!
+# }
+
+type Log {
+	logLevel: LogLevel
+	message: String
+	stackTrace: [String!]
+}
+
+enum NotificationType {
+	CONFIRM
+	ERROR
+	INFORMATION
+	QUESTION
+	WARNING
+}
+
+type Notification {
+	type: NotificationType
+	title: String
+	message: String
+	detail: String
+	parameters: [AttributeDefinition]
+	isClosed: Boolean
+	response: [Property!]
+}
+
+# Algorithm reference type
+type AlgorithmRef {
+	id: ID!
+	inData: [DataRef!]
+	options: [Property!]
+	algorithm: Algorithm!
+
+	state: AlgorithmState
+	scheduledRunTime: Time
+	progress: Int
+	outData: [DataRef!]
+}
+
+# Data reference type
+type DataRef {
+	id: ID!
+	format: String!
+	metadata: DataMetadata!
+}
+
+type Algorithm {
+	id: ID!
+	metadata: AlgorithmMetadata!
+}
+
+# Algorithm Metadata type
+type AlgorithmMetadata {
+	parameters: UserEnteredParameters
+	inData: [String!]
+	outData: [String!]
+	parentage: String
+	type: AlgorithmType
+	remotable: String
+	label: String
+	description: String
+	menuPath: String
+	conversion: ConversionType
+	authors: String
+	implementers: String
+	integrators: String
+	documentationUrl: String
+	reference: String
+	referenceUrl: String
+	writtenIn: String
+	otherProperties: [Property!]
+}
+
+type UserEnteredParameters {
+	id: ID
+	title: String
+	description: String
+	attributes: [AttributeDefinition!]
+}
+
+enum AttributeType {
+	BOOLEAN
+	BYTE
+	CHARACTER
+	DOUBLE
+	FLOAT
+	INTEGER
+	LONG
+	SHORT
+	STRING
+}
+
+type AttributeDefinition {
+	id: String!
+	name: String!
+	type: AttributeType!
+	options: [Property!]
+}
+
+enum AlgorithmState {
+	CANCELLED
+	ERRORED
+	IDLE
+	PAUSED
+	RUNNING
+	SCHEDULED
+	WAITING
+}
+
+enum ConversionType{
+	LOSSLESS
+	LOSSY
+}
+
+enum AlgorithmType{
+	CONVERTER
+	DATASET
+	VALIDATOR
+}
+
+enum DataType {
+	DATABASE
+	MATRIX
+	MODEL
+	NETWORK
+	PLOT
+	RASTERIMAGE
+	RINSTANCE
+	TABLE
+	TEXT
+	TREE
+	UNKNOWN
+	VECTORIMAGE
+}
+
+type DataMetadata {
+	label: String
+	shortLabel: String
+	parent: String
+	type: DataType
+	modified: String
+	serviceReference: String
+	otherProperties: [Property!]
+}
+
+input PropertyInput {
+	key: String!
+	value: Value!
+}
+
+# Generic Property {Key:Value} type
+type Property {
+	key: String!
+	value: Value!
+}
