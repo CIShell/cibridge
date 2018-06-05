@@ -1,10 +1,9 @@
-const fs = require('fs');
-const rootSchema = require('./src/root-schema');
-const algorithm = require('./src/algorithm');
-const data = require('./src/data');
-const guiBuilder = require('./src/gui-builder');
-const logger = require('./src/logger');
-const util = require('./src/util');
+const rootSchema = require('./root-schema');
+const algorithm = require('./algorithm');
+const data = require('./data');
+const guiBuilder = require('./gui-builder');
+const logger = require('./logger');
+const util = require('./util');
 
 const typeDefs = `\
 ${rootSchema.scalars}
@@ -29,4 +28,4 @@ ${util.types}
 ${util.inputTypes}
 ${util.enums}`;
 
-fs.writeFileSync('cibridge-schema_0.1.0-draft.graphqls', typeDefs);
+module.exports = typeDefs;

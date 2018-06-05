@@ -1,0 +1,32 @@
+{
+  "name": "cibridge-schema",
+  "version": "1.0.0",
+  "description": "Cyberinfrastructure Bridge is a GraphQL API for the integration and utilization of datasets, algorithms, tools, and computing resources. AKA CIShell for the Web.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "schema": "cibridge-schema_0.1.0-draft.graphqls",
+  "scripts": {
+    "build": "node src/build-schema",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cns-iu/cibridge.git"
+  },
+  "keywords": [
+    "cishell",
+    "cibridge",
+    "algorithms",
+    "networks",
+    "analysis",
+    "visualization",
+    "graphql",
+    "schema"
+  ],
+  "author": "Cyberinfrastructure for Network Science Center (CNS)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cns-iu/cibridge/issues"
+  },
+  "homepage": "https://github.com/cns-iu/cibridge#readme"
+}
