@@ -1,3 +1,3 @@
 const typeDefs = require('./src/schema');
 
-module.exports = { 'typeDefs': typeDefs };
+module.exports = { 'typeDefs': typeDefs, 'default': [typeDefs] };

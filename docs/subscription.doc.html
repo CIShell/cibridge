@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./styles/graphdoc.css" />
+    <title>Subscription</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet"><link type="text/css" rel="stylesheet" href="./assets/code.css" /><link type="text/css" rel="stylesheet" href="./assets/require-by.css" />
+</head>
+<body class="slds-scrollable--y">
+    <nav class="slds-grid slds-grid--vertical slds-col--rule-right">
+        <header class="slds-p-around--medium slds-col slds-shrik slds-grow-none">
+            <button class="slds-button slds-button--icon slds-float--right js-toggle-navigation less-than-medium">
+                <i class="material-icons">close</i>
+            </button>
+                <h3 class="slds-text-heading--medium"><a href="./">GraphQL Schema</a></h3>
+            <div class="slds-p-top--small">
+                <input id="type-search" type="text" placeholder="Search a type" autofocus="" class="slds-input" />
+            </div>
+        </header>
+        <div id="navication-scroll" class="slds-scrollable--y slds-col slds-grow">
+<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
+    <h4 class="slds-text-title--caps slds-p-around--medium">Schema</h4>
+    <ul>
+        <li  title="Query">
+            <a href="query.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Query
+            </a>
+        </li>
+        <li  title="Mutation">
+            <a href="mutation.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Mutation
+            </a>
+        </li>
+        <li class="slds-is-active" title="Subscription">
+            <a href="subscription.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Subscription
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
+    <h4 class="slds-text-title--caps slds-p-around--medium">Scalars</h4>
+    <ul>
+        <li  title="Boolean">
+            <a href="boolean.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Boolean
+            </a>
+        </li>
+        <li  title="File">
+            <a href="file.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                File
+            </a>
+        </li>
+        <li  title="ID">
+            <a href="id.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                ID
+            </a>
+        </li>
+        <li  title="Int">
+            <a href="int.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Int
+            </a>
+        </li>
+        <li  title="String">
+            <a href="string.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                String
+            </a>
+        </li>
+        <li  title="Time">
+            <a href="time.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Time
+            </a>
+        </li>
+        <li  title="Value">
+            <a href="value.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Value
+            </a>
+        </li>
+        <li  title="Void">
+            <a href="void.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Void
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
+    <h4 class="slds-text-title--caps slds-p-around--medium">Enums</h4>
+    <ul>
+        <li  title="AlgorithmState">
+            <a href="algorithmstate.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmState
+            </a>
+        </li>
+        <li  title="AlgorithmType">
+            <a href="algorithmtype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmType
+            </a>
+        </li>
+        <li  title="AttributeType">
+            <a href="attributetype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AttributeType
+            </a>
+        </li>
+        <li  title="ConversionType">
+            <a href="conversiontype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                ConversionType
+            </a>
+        </li>
+        <li  title="DataType">
+            <a href="datatype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                DataType
+            </a>
+        </li>
+        <li  title="LogLevel">
+            <a href="loglevel.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                LogLevel
+            </a>
+        </li>
+        <li  title="NotificationType">
+            <a href="notificationtype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                NotificationType
+            </a>
+        </li>
+        <li  title="__DirectiveLocation">
+            <a href="directivelocation.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                __DirectiveLocation
+            </a>
+        </li>
+        <li  title="__TypeKind">
+            <a href="typekind.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                __TypeKind
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
+    <h4 class="slds-text-title--caps slds-p-around--medium">Objects</h4>
+    <ul>
+        <li  title="Algorithm">
+            <a href="algorithm.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Algorithm
+            </a>
+        </li>
+        <li  title="AlgorithmMetadata">
+            <a href="algorithmmetadata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmMetadata
+            </a>
+        </li>
+        <li  title="AlgorithmRef">
+            <a href="algorithmref.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmRef
+            </a>
+        </li>
+        <li  title="AttributeDefinition">
+            <a href="attributedefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AttributeDefinition
+            </a>
+        </li>
+        <li  title="DataMetadata">
+            <a href="datametadata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                DataMetadata
+            </a>
+        </li>
+        <li  title="DataRef">
+            <a href="dataref.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                DataRef
+            </a>
+        </li>
+        <li  title="Log">
+            <a href="log.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Log
+            </a>
+        </li>
+        <li  title="Notification">
+            <a href="notification.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Notification
+            </a>
+        </li>
+        <li  title="Property">
+            <a href="property.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Property
+            </a>
+        </li>
+        <li  title="UserEnteredParameters">
+            <a href="userenteredparameters.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                UserEnteredParameters
+            </a>
+        </li>
+        <li  title="__Directive">
+            <a href="directive.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                __Directive
+            </a>
+        </li>
+        <li  title="__EnumValue">
+            <a href="enumvalue.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                __EnumValue
+            </a>
+        </li>
+        <li  title="__Field">
+            <a href="field.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                __Field
+            </a>
+        </li>
+        <li  title="__InputValue">
+            <a href="inputvalue.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                __InputValue
+            </a>
+        </li>
+        <li  title="__Schema">
+            <a href="schema.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                __Schema
+            </a>
+        </li>
+        <li  title="__Type">
+            <a href="type.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                __Type
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
+    <h4 class="slds-text-title--caps slds-p-around--medium">Input Objects</h4>
+    <ul>
+        <li  title="AlgorithmFilter">
+            <a href="algorithmfilter.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmFilter
+            </a>
+        </li>
+        <li  title="DataFilter">
+            <a href="datafilter.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                DataFilter
+            </a>
+        </li>
+        <li  title="LogFilter">
+            <a href="logfilter.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                LogFilter
+            </a>
+        </li>
+        <li  title="NotificationFilter">
+            <a href="notificationfilter.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                NotificationFilter
+            </a>
+        </li>
+        <li  title="PropertyInput">
+            <a href="propertyinput.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                PropertyInput
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
+    <h4 class="slds-text-title--caps slds-p-around--medium">Directives</h4>
+    <ul>
+        <li  title="deprecated">
+            <a href="deprecated.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                deprecated
+            </a>
+        </li>
+        <li  title="include">
+            <a href="include.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                include
+            </a>
+        </li>
+        <li  title="skip">
+            <a href="skip.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                skip
+            </a>
+        </li>
+    </ul>
+</div>
+        </div>
+    </nav>
+    <main><section class="title slds-theme--inverse">
+    <div class="container slds-grid">
+        <div>
+        <button class="slds-button js-toggle-navigation less-than-medium">
+            <i class="material-icons slds-button__icon slds-button__icon--left">menu</i>
+            <span class="slds-text-title--caps">Types<span>
+        </button>
+        </div>
+        </div>
+    </div>
+    <div class="container">
+        <p class="slds-text-title--caps slds-text-color--weak">OBJECT</p>
+        <h1 class="slds-text-heading--large">Subscription</h1>
+        <div class="slds-text-body--regular"></div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <h2 id="graphql-schema-definition" class="graphdoc-section__title slds-text-heading--medium slds-m-top--small">
+            <a href="#graphql-schema-definition">
+                <i class="material-icons">link</i>
+            </a>
+            GraphQL Schema definition
+        </h2>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Subscription</span> {</li><li></li><li><span class="tab"><span class="meta">algorithmAdded</span>: <a class="support type" href="algorithm.doc.html">Algorithm</a> </span></li><li></li><li><span class="tab"><span class="meta">algorithmRemoved</span>: <a class="support type" href="algorithm.doc.html">Algorithm</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">algorithmRefUpdated</span>(<span class="meta">filter</span>: <a class="support type" href="algorithmfilter.doc.html">AlgorithmFilter</a>): <a class="support type" href="algorithmref.doc.html">AlgorithmRef</a> </span></li><li></li><li><span class="tab"><span class="meta">newNotification</span>: <a class="support type" href="notification.doc.html">Notification</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">dataRefUpdated</span>(<span class="meta">filter</span>: <a class="support type" href="datafilter.doc.html">DataFilter</a>): <a class="support type" href="dataref.doc.html">DataRef</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">dataAdded</span>(<span class="meta">filter</span>: <a class="support type" href="datafilter.doc.html">DataFilter</a>): <a class="support type" href="dataref.doc.html">DataRef</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">dataLabelChanged</span>(<span class="meta">filter</span>: <a class="support type" href="datafilter.doc.html">DataFilter</a>): <a class="support type" href="dataref.doc.html">DataRef</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">dataRemoved</span>(<span class="meta">filter</span>: <a class="support type" href="datafilter.doc.html">DataFilter</a>): <a class="support type" href="dataref.doc.html">DataRef</a> </span></li><li></li><li><span class="tab"><span class="meta">dataSelected</span>: [<a class="support type" href="dataref.doc.html">DataRef</a>!] </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">algorithmError</span>(<span class="meta">filter</span>: <a class="support type" href="algorithmfilter.doc.html">AlgorithmFilter</a>): <a class="support type" href="algorithmref.doc.html">AlgorithmRef</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">algorithmStarted</span>(<span class="meta">filter</span>: <a class="support type" href="algorithmfilter.doc.html">AlgorithmFilter</a>): <a class="support type" href="algorithmref.doc.html">AlgorithmRef</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">algorithmFinished</span>(<span class="meta">filter</span>: <a class="support type" href="algorithmfilter.doc.html">AlgorithmFilter</a>): <a class="support type" href="algorithmref.doc.html">AlgorithmRef</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">algorithmScheduled</span>(<span class="meta">filter</span>: <a class="support type" href="algorithmfilter.doc.html">AlgorithmFilter</a>): <a class="support type" href="algorithmref.doc.html">AlgorithmRef</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">algorithmRescheduled</span>(<span class="meta">filter</span>: <a class="support type" href="algorithmfilter.doc.html">AlgorithmFilter</a>): <a class="support type" href="algorithmref.doc.html">AlgorithmRef</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">algorithmUnscheduled</span>(<span class="meta">filter</span>: <a class="support type" href="algorithmfilter.doc.html">AlgorithmFilter</a>): <a class="support type" href="algorithmref.doc.html">AlgorithmRef</a> </span></li><li></li><li><span class="tab"><span class="meta">schedulerCleared</span>: <a class="support type" href="void.doc.html">Void</a> </span></li><li></li><li><span class="tab"><span class="meta">schedulerRunStateChanged</span>: <a class="support type" href="boolean.doc.html">Boolean</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">log</span>(<span class="meta">filter</span>: <a class="support type" href="logfilter.doc.html">LogFilter</a>): <a class="support type" href="log.doc.html">Log</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">errorLog</span>(<span class="meta">filter</span>: <a class="support type" href="logfilter.doc.html">LogFilter</a>): <a class="support type" href="log.doc.html">Log</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">warningLog</span>(<span class="meta">filter</span>: <a class="support type" href="logfilter.doc.html">LogFilter</a>): <a class="support type" href="log.doc.html">Log</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">infoLog</span>(<span class="meta">filter</span>: <a class="support type" href="logfilter.doc.html">LogFilter</a>): <a class="support type" href="log.doc.html">Log</a> </span></li><li></li><li><span class="tab"><span class="comment line"># Arguments</span></span></li><li><span class="tab"><span class="comment line">#   <strong>filter</strong>: </span></span></li><li><span class="tab"><span class="meta">debugLog</span>(<span class="meta">filter</span>: <a class="support type" href="logfilter.doc.html">LogFilter</a>): <a class="support type" href="log.doc.html">Log</a> </span></li><li>}</li></ul></code>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <h2 id="require-by" class="graphdoc-section__title slds-text-heading--medium slds-m-top--small">
+            <a href="#require-by">
+                <i class="material-icons">link</i>
+            </a>
+            Require by
+        </h2>
+        <div class="require-by anyone">This element is not required by anyone</div>
+    </div>
+</section>
+<footer>
+<div class="container slds-p-around--large">
+    <p class="slds-text-align--right slds-text-title--caps">
+        Generated with <a href="https://github.com/2fd/graphdoc#readme" target="_blank">graphdoc 2.4.0</a>
+    </p>
+</div>
+</footer>
+</main>
+    <script src="./scripts/focus-active.js"></script>
+    <script src="./scripts/filter-types.js"></script>
+    <script src="./scripts/toggle-navigation.js"></script>
+</body>
