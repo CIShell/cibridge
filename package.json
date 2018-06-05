@@ -8,7 +8,8 @@
   "scripts": {
     "build": "node src/build-schema",
     "graphdoc": "graphdoc --force",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "node src/print-schema | graphql-schema-linter -s",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "force": true
   },
   "devDependencies": {
-    "@2fd/graphdoc": "^2.4.0"
+    "@2fd/graphdoc": "^2.4.0",
+    "graphql-schema-linter": "^0.1.6"
   }
 }
