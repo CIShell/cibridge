@@ -1,6 +1,6 @@
 # CIBridge
 
-<a href="https://app.zenhub.com/workspace/o/cns-iu/cibridge"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
+<a href="https://app.zenhub.com/workspace/o/CIShell/cibridge"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
 
 ## Work In Progress
 
@@ -39,9 +39,9 @@ from CIShell, over a standard GraphQL API.
 
 Essential links for this project.
 
-*   Submit an Issue: [![image](https://img.shields.io/badge/issue-submit-green.svg?logo=github&longCache=true&style=social)](https://github.com/cns-iu/cibridge/issues/new)
-*   [GitHub Repository](https://github.com/cns-iu/cibridge)
-*   [Project Board](https://app.zenhub.com/workspace/o/cns-iu/cibridge)
+*   Submit an Issue: [![image](https://img.shields.io/badge/issue-submit-green.svg?logo=github&longCache=true&style=social)](https://github.com/CIShell/cibridge/issues/new)
+*   [GitHub Repository](https://github.com/CIShell/cibridge)
+*   [Project Board](https://app.zenhub.com/workspace/o/CIShell/cibridge)
 
 ## Timelines & Milestones
 
