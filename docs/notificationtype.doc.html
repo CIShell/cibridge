@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">ENUM</p>
         <h1 class="slds-text-heading--large">NotificationType</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Specifies the general type of notifications</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">NotificationType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">CONFIRM</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">ERROR</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">INFORMATION</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">QUESTION</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">WARNING</span></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">NotificationType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Type of alert notifications to inform the user of important fact and requires </span></span></li><li><span class="tab"><span class="comment line">#   user confirmation before preceeding </span></span></li><li><span class="tab"><span class="meta">CONFIRM</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Type of notifications to report an error or a problem that has occured</span></span></li><li><span class="tab"><span class="meta">ERROR</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Type of notifications to ask form inputs from user</span></span></li><li><span class="tab"><span class="meta">FORM</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Type of notifications to simply inform the user about a situation</span></span></li><li><span class="tab"><span class="meta">INFORMATION</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Type of notifications that asks the user whether an action should proceed or </span></span></li><li><span class="tab"><span class="comment line">#   not. It can be a simple YES or NO question.</span></span></li><li><span class="tab"><span class="meta">QUESTION</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Type of notifications to warn user of a situation which requires user's </span></span></li><li><span class="tab"><span class="comment line">#   attention</span></span></li><li><span class="tab"><span class="meta">WARNING</span></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="notification.doc.html" title="Notification - ">Notification<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="notification.doc.html" title="Notification - Type to create client side notifications">Notification<em>Type to create client side notifications</em></a><li></ul>
     </div>
 </section>
 <footer>

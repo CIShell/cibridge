@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">ENUM</p>
         <h1 class="slds-text-heading--large">ConversionType</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>For the converter algorithms, it specifies if any data is lost in the conversion</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">enum</span> <span class="identifier">ConversionType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">LOSSLESS</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">LOSSY</span></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">enum</span> <span class="identifier">ConversionType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Specifies the type of data conversion where no data is lost</span></span></li><li><span class="tab"><span class="meta">LOSSLESS</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Specifies the type of data conversion where some data can be lost</span></span></li><li><span class="tab"><span class="meta">LOSSY</span></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="algorithmmetadata.doc.html" title="AlgorithmMetadata - Algorithm Metadata type">AlgorithmMetadata<em>Algorithm Metadata type</em></a><li></ul>
+        <ul class="require-by"><li><a href="algorithmmetadata.doc.html" title="AlgorithmMetadata - Algorithm Metadata type that provides relevant information about the algorithm template">AlgorithmMetadata<em>Algorithm Metadata type that provides relevant information about the algorithm template</em></a><li></ul>
     </div>
 </section>
 <footer>

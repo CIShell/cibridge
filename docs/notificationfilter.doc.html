@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">INPUT_OBJECT</p>
         <h1 class="slds-text-heading--large">NotificationFilter</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Input filter to match notifications</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">NotificationFilter</span> {</li><li><span class="tab"><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">limit</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">offset</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">NotificationFilter</span> {</li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Identifier for the notification filter object</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Maximum number of notifications that will be matched against the filter</span></span></li><li><span class="tab"><span class="meta">limit</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Number of items to skip while matching</span></span></li><li><span class="tab"><span class="meta">offset</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="query.doc.html" title="Query - ">Query<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li></ul>
     </div>
 </section>
 <footer>

@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">INPUT_OBJECT</p>
         <h1 class="slds-text-heading--large">DataFilter</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Input type to filter the matching data objects</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">DataFilter</span> {</li><li><span class="tab"><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">format</span>: <a class="support type" href="string.doc.html">String</a></span></li></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">DataFilter</span> {</li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Identifier for the data filter object</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   To filter the data objects based on the given format</span></span></li><li><span class="tab"><span class="meta">format</span>: <a class="support type" href="string.doc.html">String</a></span></li></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="query.doc.html" title="Query - ">Query<em></em></a><li><li><a href="subscription.doc.html" title="Subscription - ">Subscription<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li><li><a href="subscription.doc.html" title="Subscription - Root subscription type">Subscription<em>Root subscription type</em></a><li></ul>
     </div>
 </section>
 <footer>

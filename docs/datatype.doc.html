@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">ENUM</p>
         <h1 class="slds-text-heading--large">DataType</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Enum type to specify the general type of data objects</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">DataType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">DATABASE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">MATRIX</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">MODEL</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">NETWORK</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">PLOT</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">RASTERIMAGE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">RINSTANCE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">TABLE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">TEXT</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">TREE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">UNKNOWN</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">VECTORIMAGE</span></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">DataType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is abstractly a database</span></span></li><li><span class="tab"><span class="meta">DATABASE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is abstractly a matrix</span></span></li><li><span class="tab"><span class="meta">MATRIX</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   the data model is a 'model' object</span></span></li><li><span class="tab"><span class="meta">MODEL</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is abstractly a network</span></span></li><li><span class="tab"><span class="meta">NETWORK</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is abstractly a data plot</span></span></li><li><span class="tab"><span class="meta">PLOT</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is a JPEG object</span></span></li><li><span class="tab"><span class="meta">RASTERIMAGE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is an 'R Instance' object</span></span></li><li><span class="tab"><span class="meta">RINSTANCE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is abstractly a table</span></span></li><li><span class="tab"><span class="meta">TABLE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is abstractly a plain text file</span></span></li><li><span class="tab"><span class="meta">TEXT</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is abstractly a tree</span></span></li><li><span class="tab"><span class="meta">TREE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is abstractly an unknown type</span></span></li><li><span class="tab"><span class="meta">UNKNOWN</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The data model is a PostScript file</span></span></li><li><span class="tab"><span class="meta">VECTORIMAGE</span></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="datametadata.doc.html" title="DataMetadata - ">DataMetadata<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="datametadata.doc.html" title="DataMetadata - Stores the metadata associated with the data object">DataMetadata<em>Stores the metadata associated with the data object</em></a><li></ul>
     </div>
 </section>
 <footer>

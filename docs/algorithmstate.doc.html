@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">ENUM</p>
         <h1 class="slds-text-heading--large">AlgorithmState</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Specifies the current state of the algorithm instance</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">AlgorithmState</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">CANCELLED</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">ERRORED</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">IDLE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">PAUSED</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">RUNNING</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">SCHEDULED</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">WAITING</span></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">AlgorithmState</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The algorithm was cancelled by the user</span></span></li><li><span class="tab"><span class="meta">CANCELLED</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The algorithm encountered error during the run</span></span></li><li><span class="tab"><span class="meta">ERRORED</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The algorithm is created and waiting to be scheduled</span></span></li><li><span class="tab"><span class="meta">IDLE</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The algorithm is paused</span></span></li><li><span class="tab"><span class="meta">PAUSED</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The algorithm is running currently</span></span></li><li><span class="tab"><span class="meta">RUNNING</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The algorithm is scheduled and waiting to be executed</span></span></li><li><span class="tab"><span class="meta">SCHEDULED</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The algorithm is waiting for user input</span></span></li><li><span class="tab"><span class="meta">WAITING</span></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="algorithmfilter.doc.html" title="AlgorithmFilter - input types">AlgorithmFilter<em>input types</em></a><li><li><a href="algorithmref.doc.html" title="AlgorithmRef - Algorithm reference type">AlgorithmRef<em>Algorithm reference type</em></a><li></ul>
+        <ul class="require-by"><li><a href="algorithmfilter.doc.html" title="AlgorithmFilter - Input type for filtering algorithms based on ">AlgorithmFilter<em>Input type for filtering algorithms based on </em></a><li><li><a href="algorithmref.doc.html" title="AlgorithmRef - Reference to algorithm instance">AlgorithmRef<em>Reference to algorithm instance</em></a><li></ul>
     </div>
 </section>
 <footer>

@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">OBJECT</p>
         <h1 class="slds-text-heading--large">Notification</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Type to create client side notifications</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Notification</span> {</li><li></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="notificationtype.doc.html">NotificationType</a> </span></li><li></li><li><span class="tab"><span class="meta">title</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">message</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">detail</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">parameters</span>: [<a class="support type" href="attributedefinition.doc.html">AttributeDefinition</a>] </span></li><li></li><li><span class="tab"><span class="meta">isClosed</span>: <a class="support type" href="boolean.doc.html">Boolean</a> </span></li><li></li><li><span class="tab"><span class="meta">response</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Notification</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Type of the notification</span></span></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="notificationtype.doc.html">NotificationType</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Short title of the notification</span></span></li><li><span class="tab"><span class="meta">title</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Message of the notification</span></span></li><li><span class="tab"><span class="meta">message</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Detailed description for the notification</span></span></li><li><span class="tab"><span class="meta">detail</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   List of parameters which includes the type, name, description and options for </span></span></li><li><span class="tab"><span class="comment line">#   dropdown boxes</span></span></li><li><span class="tab"><span class="meta">parameters</span>: [<a class="support type" href="attributedefinition.doc.html">AttributeDefinition</a>] </span></li><li></li><li><span class="tab"><span class="comment line">#   Says if the notification is closed</span></span></li><li><span class="tab"><span class="meta">isClosed</span>: <a class="support type" href="boolean.doc.html">Boolean</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Response from the user as a list of key:value mappings</span></span></li><li><span class="tab"><span class="meta">response</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="query.doc.html" title="Query - ">Query<em></em></a><li><li><a href="subscription.doc.html" title="Subscription - ">Subscription<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li><li><a href="subscription.doc.html" title="Subscription - Root subscription type">Subscription<em>Root subscription type</em></a><li></ul>
     </div>
 </section>
 <footer>

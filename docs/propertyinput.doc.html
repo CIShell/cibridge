@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">INPUT_OBJECT</p>
         <h1 class="slds-text-heading--large">PropertyInput</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Generic Property input type to pass key:value mappings over queries and mutations</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">PropertyInput</span> {</li><li><span class="tab"><li><span class="tab"><span class="meta">key</span>: <a class="support type" href="string.doc.html">String</a>!</span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">value</span>: <a class="support type" href="value.doc.html">Value</a>!</span></li></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">PropertyInput</span> {</li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Key of the property</span></span></li><li><span class="tab"><span class="meta">key</span>: <a class="support type" href="string.doc.html">String</a>!</span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Value mapped to the key. The data type for the field is left for the user to </span></span></li><li><span class="tab"><span class="comment line">#   decide</span></span></li><li><span class="tab"><span class="meta">value</span>: <a class="support type" href="value.doc.html">Value</a>!</span></li></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="mutation.doc.html" title="Mutation - ">Mutation<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="mutation.doc.html" title="Mutation - Root mutation type">Mutation<em>Root mutation type</em></a><li></ul>
     </div>
 </section>
 <footer>

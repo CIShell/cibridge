@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">INPUT_OBJECT</p>
         <h1 class="slds-text-heading--large">LogFilter</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Filter input type to match logs with certain criteria</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">input</span> <span class="identifier">LogFilter</span> {</li><li><span class="tab"><li><span class="tab"><span class="meta">logLevel</span>: [<a class="support type" href="loglevel.doc.html">LogLevel</a>!]</span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">logsSince</span>: <a class="support type" href="time.doc.html">Time</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">limit</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="meta">offset</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">input</span> <span class="identifier">LogFilter</span> {</li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Matches all the logs specified in the log level list</span></span></li><li><span class="tab"><span class="meta">logLevel</span>: [<a class="support type" href="loglevel.doc.html">LogLevel</a>!]</span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Matches all the logs logged since certain timestamp</span></span></li><li><span class="tab"><span class="meta">logsSince</span>: <a class="support type" href="time.doc.html">Time</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Maximum number of log objects to be fetched per query</span></span></li><li><span class="tab"><span class="meta">limit</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Number of items to skip while matching</span></span></li><li><span class="tab"><span class="meta">offset</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="query.doc.html" title="Query - ">Query<em></em></a><li><li><a href="subscription.doc.html" title="Subscription - ">Subscription<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li><li><a href="subscription.doc.html" title="Subscription - Root subscription type">Subscription<em>Root subscription type</em></a><li></ul>
     </div>
 </section>
 <footer>

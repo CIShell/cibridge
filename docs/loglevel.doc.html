@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">ENUM</p>
         <h1 class="slds-text-heading--large">LogLevel</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Severity level for the logs</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">LogLevel</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">DEBUG</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">ERROR</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">INFO</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="meta">WARNING</span></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">LogLevel</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The most granular log level. Used for debugging and may be irrelevant to anyone </span></span></li><li><span class="tab"><span class="comment line">#   but the algorithm developer.</span></span></li><li><span class="tab"><span class="meta">DEBUG</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Indicates a problem occured while executing algorithm or services.</span></span></li><li><span class="tab"><span class="meta">ERROR</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Used for providing information about and while hte algorithm is executing. Does </span></span></li><li><span class="tab"><span class="comment line">#   not indiate a problem.</span></span></li><li><span class="tab"><span class="meta">INFO</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   Indicates the algorithm will still be executed, but that outputs may not be what </span></span></li><li><span class="tab"><span class="comment line">#   was expected.</span></span></li><li><span class="tab"><span class="meta">WARNING</span></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="log.doc.html" title="Log - ">Log<em></em></a><li><li><a href="logfilter.doc.html" title="LogFilter - ">LogFilter<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="log.doc.html" title="Log - Object type for logging">Log<em>Object type for logging</em></a><li><li><a href="logfilter.doc.html" title="LogFilter - Filter input type to match logs with certain criteria">LogFilter<em>Filter input type to match logs with certain criteria</em></a><li></ul>
     </div>
 </section>
 <footer>

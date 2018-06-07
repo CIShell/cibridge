@@ -9,10 +9,19 @@ const preferences = require('./preferences');
 const scalars = 
 `\
 # scalar types
+# Identifier for the given object
 scalar ID
+
+# data type to store values (of any data type specified by the user)
 scalar Value
+
+# data type to store datetime information
 scalar Time
+
+# data type to store file information
 scalar File
+
+# data type equivalent to null value
 scalar Void
 `
 
@@ -30,6 +39,7 @@ schema {
 }
 `
 const queries = `\
+# Root query type
 type Query{\
 	${framework.queries}
 	${dataConversion.queries}
@@ -42,6 +52,7 @@ type Query{\
 `
 
 const mutations = `\
+# Root mutation type
 type Mutation{\
 	${framework.mutations}
 	${dataConversion.mutations}
@@ -50,6 +61,7 @@ type Mutation{\
 }
 `
 const subscriptions = `\
+# Root subscription type
 type Subscription{\
 	${framework.subscriptions}
 	${guiBuilder.subscriptions}
@@ -60,7 +72,7 @@ type Subscription{\
 `
 
 const pageInfo = `\
-# type to store info relate to pagination
+# type to store info related to pagination
 # type PageInfo {
 # 	hasNextPage: Boolean!
 # 	hasPreviousPage: Boolean!

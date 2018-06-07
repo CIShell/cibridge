@@ -287,7 +287,7 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">OBJECT</p>
         <h1 class="slds-text-heading--large">Property</h1>
-        <div class="slds-text-body--regular"><p>Generic Property {Key:Value} type</p>
+        <div class="slds-text-body--regular"><p>Generic Property type to store key:value mappings</p>
 </div>
     </div>
 </section>
@@ -299,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">type</span> <span class="identifier">Property</span> {</li><li></li><li><span class="tab"><span class="meta">key</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="meta">value</span>: <a class="support type" href="value.doc.html">Value</a>! </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">type</span> <span class="identifier">Property</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Key of the property</span></span></li><li><span class="tab"><span class="meta">key</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Value mapped to the key. The data type for the field is left for the user to </span></span></li><li><span class="tab"><span class="comment line">#   decide</span></span></li><li><span class="tab"><span class="meta">value</span>: <a class="support type" href="value.doc.html">Value</a>! </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -310,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="algorithmmetadata.doc.html" title="AlgorithmMetadata - Algorithm Metadata type">AlgorithmMetadata<em>Algorithm Metadata type</em></a><li><li><a href="algorithmref.doc.html" title="AlgorithmRef - Algorithm reference type">AlgorithmRef<em>Algorithm reference type</em></a><li><li><a href="attributedefinition.doc.html" title="AttributeDefinition - ">AttributeDefinition<em></em></a><li><li><a href="datametadata.doc.html" title="DataMetadata - ">DataMetadata<em></em></a><li><li><a href="notification.doc.html" title="Notification - ">Notification<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="algorithmmetadata.doc.html" title="AlgorithmMetadata - Algorithm Metadata type that provides relevant information about the algorithm template">AlgorithmMetadata<em>Algorithm Metadata type that provides relevant information about the algorithm template</em></a><li><li><a href="algorithmref.doc.html" title="AlgorithmRef - Reference to algorithm instance">AlgorithmRef<em>Reference to algorithm instance</em></a><li><li><a href="attributedefinition.doc.html" title="AttributeDefinition - Definition of the attributes for the user entered parameters which includes name, type and options for dropdown boxes">AttributeDefinition<em>Definition of the attributes for the user entered parameters which includes name, type and options for dropdown boxes</em></a><li><li><a href="datametadata.doc.html" title="DataMetadata - Stores the metadata associated with the data object">DataMetadata<em>Stores the metadata associated with the data object</em></a><li><li><a href="notification.doc.html" title="Notification - Type to create client side notifications">Notification<em>Type to create client side notifications</em></a><li></ul>
     </div>
 </section>
 <footer>

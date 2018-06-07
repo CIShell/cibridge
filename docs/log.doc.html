@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">OBJECT</p>
         <h1 class="slds-text-heading--large">Log</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Object type for logging</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">type</span> <span class="identifier">Log</span> {</li><li></li><li><span class="tab"><span class="meta">logLevel</span>: <a class="support type" href="loglevel.doc.html">LogLevel</a> </span></li><li></li><li><span class="tab"><span class="meta">message</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">stackTrace</span>: [<a class="support type" href="string.doc.html">String</a>!] </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Log</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Level at which the logs will be logged</span></span></li><li><span class="tab"><span class="meta">logLevel</span>: <a class="support type" href="loglevel.doc.html">LogLevel</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Log message</span></span></li><li><span class="tab"><span class="meta">message</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   List of string specifying the complete trace of events</span></span></li><li><span class="tab"><span class="meta">stackTrace</span>: [<a class="support type" href="string.doc.html">String</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   Associated timestamp</span></span></li><li><span class="tab"><span class="meta">timestamp</span>: <a class="support type" href="time.doc.html">Time</a> </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="query.doc.html" title="Query - ">Query<em></em></a><li><li><a href="subscription.doc.html" title="Subscription - ">Subscription<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li><li><a href="subscription.doc.html" title="Subscription - Root subscription type">Subscription<em>Root subscription type</em></a><li></ul>
     </div>
 </section>
 <footer>

@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">OBJECT</p>
         <h1 class="slds-text-heading--large">DataMetadata</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Stores the metadata associated with the data object</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">DataMetadata</span> {</li><li></li><li><span class="tab"><span class="meta">label</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">shortLabel</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">parent</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="datatype.doc.html">DataType</a> </span></li><li></li><li><span class="tab"><span class="meta">modified</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">serviceReference</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="meta">otherProperties</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">DataMetadata</span> {</li><li></li><li><span class="tab"><span class="comment line">#   The label to give the data object if displayed</span></span></li><li><span class="tab"><span class="meta">label</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A short label to give the Data object for shorter displays. It is recommended to </span></span></li><li><span class="tab"><span class="comment line">#   keep the string length below 20 characters</span></span></li><li><span class="tab"><span class="meta">shortLabel</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   The parent data object of the data object. 	This is used when a data object is </span></span></li><li><span class="tab"><span class="comment line">#   derived from another data object to show the hierarchical relationship between </span></span></li><li><span class="tab"><span class="comment line">#   them. 	This property can be null, signifying that the data object was not </span></span></li><li><span class="tab"><span class="comment line">#   derived from any other data object, 	such as when loading a new data object from </span></span></li><li><span class="tab"><span class="comment line">#   a file.</span></span></li><li><span class="tab"><span class="meta">parent</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Specifies the general type of the data</span></span></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="datatype.doc.html">DataType</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Flag to determine if the Data object has been modified and not saved since the </span></span></li><li><span class="tab"><span class="comment line">#   modification. 	This is used to do things like notify the user before they exit </span></span></li><li><span class="tab"><span class="comment line">#   that a modified Data object exists and ask if they want to save it.</span></span></li><li><span class="tab"><span class="meta">modified</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Other metadata information related to the data</span></span></li><li><span class="tab"><span class="meta">otherProperties</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="dataref.doc.html" title="DataRef - Data reference type">DataRef<em>Data reference type</em></a><li></ul>
+        <ul class="require-by"><li><a href="dataref.doc.html" title="DataRef - Reference type for the data created in CIShell">DataRef<em>Reference type for the data created in CIShell</em></a><li></ul>
     </div>
 </section>
 <footer>

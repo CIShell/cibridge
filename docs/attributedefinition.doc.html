@@ -287,7 +287,8 @@
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">OBJECT</p>
         <h1 class="slds-text-heading--large">AttributeDefinition</h1>
-        <div class="slds-text-body--regular"></div>
+        <div class="slds-text-body--regular"><p>Definition of the attributes for the user entered parameters which includes name, type and options for dropdown boxes</p>
+</div>
     </div>
 </section>
 <section>
@@ -298,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">AttributeDefinition</span> {</li><li></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="meta">name</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="attributetype.doc.html">AttributeType</a>! </span></li><li></li><li><span class="tab"><span class="meta">options</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">AttributeDefinition</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Identifier for the attribute</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Name for the attribute</span></span></li><li><span class="tab"><span class="meta">name</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Description</span></span></li><li><span class="tab"><span class="meta">description</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Type of the attribute</span></span></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="attributetype.doc.html">AttributeType</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Options for the dropdown boxes</span></span></li><li><span class="tab"><span class="meta">options</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -309,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="notification.doc.html" title="Notification - ">Notification<em></em></a><li><li><a href="userenteredparameters.doc.html" title="UserEnteredParameters - ">UserEnteredParameters<em></em></a><li></ul>
+        <ul class="require-by"><li><a href="notification.doc.html" title="Notification - Type to create client side notifications">Notification<em>Type to create client side notifications</em></a><li><li><a href="userenteredparameters.doc.html" title="UserEnteredParameters - Specifies parameter inputs required for the algorithm">UserEnteredParameters<em>Specifies parameter inputs required for the algorithm</em></a><li></ul>
     </div>
 </section>
 <footer>
