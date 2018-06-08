@@ -9,7 +9,7 @@ type Property {
 }
 
 # Definition of the attributes for the user entered parameters which includes name, type and options for dropdown boxes
-type AttributeDefinition {
+type ParameterDefinition {
 	# Identifier for the attribute
 	id: String!
 	
@@ -37,7 +37,7 @@ input PropertyInput {
 }
 `
 const enums = `\
-# Specifies several primitive data types for AttributeDefinition
+# Specifies several primitive data types for ParameterDefinition
 enum AttributeType {
 	# Boolean has only two possible values: true and false
 	BOOLEAN

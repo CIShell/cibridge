@@ -140,14 +140,14 @@
 <div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
     <h4 class="slds-text-title--caps slds-p-around--medium">Objects</h4>
     <ul>
-        <li  title="Algorithm">
-            <a href="algorithm.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Algorithm
+        <li  title="AlgorithmDefinition">
+            <a href="algorithmdefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmDefinition
             </a>
         </li>
-        <li  title="AlgorithmMetadata">
-            <a href="algorithmmetadata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AlgorithmMetadata
+        <li  title="AlgorithmDefinitionQueryResults">
+            <a href="algorithmdefinitionqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmDefinitionQueryResults
             </a>
         </li>
         <li  title="AlgorithmRef">
@@ -155,19 +155,14 @@
                 AlgorithmRef
             </a>
         </li>
-        <li  title="AttributeDefinition">
-            <a href="attributedefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AttributeDefinition
-            </a>
-        </li>
-        <li  title="DataMetadata">
-            <a href="datametadata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                DataMetadata
-            </a>
-        </li>
         <li class="slds-is-active" title="DataRef">
             <a href="dataref.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 DataRef
+            </a>
+        </li>
+        <li  title="InputParameters">
+            <a href="inputparameters.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                InputParameters
             </a>
         </li>
         <li  title="Log">
@@ -180,14 +175,19 @@
                 Notification
             </a>
         </li>
+        <li  title="PageInfo">
+            <a href="pageinfo.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                PageInfo
+            </a>
+        </li>
+        <li  title="ParameterDefinition">
+            <a href="parameterdefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                ParameterDefinition
+            </a>
+        </li>
         <li  title="Property">
             <a href="property.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 Property
-            </a>
-        </li>
-        <li  title="UserEnteredParameters">
-            <a href="userenteredparameters.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                UserEnteredParameters
             </a>
         </li>
         <li  title="__Directive">
@@ -299,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">DataRef</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Reference ID to the data</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   format of the data</span></span></li><li><span class="tab"><span class="meta">format</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Metadata information for the data</span></span></li><li><span class="tab"><span class="meta">metadata</span>: <a class="support type" href="datametadata.doc.html">DataMetadata</a>! </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">DataRef</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Reference ID to the data</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   format of the data</span></span></li><li><span class="tab"><span class="meta">format</span>: <a class="support type" href="string.doc.html">String</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   The label to give the data object if displayed</span></span></li><li><span class="tab"><span class="meta">label</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A short label to give the Data object for shorter displays. It is recommended to </span></span></li><li><span class="tab"><span class="comment line">#   keep the string length below 20 characters</span></span></li><li><span class="tab"><span class="meta">shortLabel</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   The parent data object of the data object. 	This is used when a data object is </span></span></li><li><span class="tab"><span class="comment line">#   derived from another data object to show the hierarchical relationship between </span></span></li><li><span class="tab"><span class="comment line">#   them. 	This property can be null, signifying that the data object was not </span></span></li><li><span class="tab"><span class="comment line">#   derived from any other data object, 	such as when loading a new data object from </span></span></li><li><span class="tab"><span class="comment line">#   a file.</span></span></li><li><span class="tab"><span class="meta">parent</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Specifies the general type of the data</span></span></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="datatype.doc.html">DataType</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Flag to determine if the Data object has been modified and not saved since the </span></span></li><li><span class="tab"><span class="comment line">#   modification. 	This is used to do things like notify the user before they exit </span></span></li><li><span class="tab"><span class="comment line">#   that a modified Data object exists and ask if they want to save it.</span></span></li><li><span class="tab"><span class="meta">modified</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Other metadata information related to the data</span></span></li><li><span class="tab"><span class="meta">otherProperties</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -310,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="algorithmref.doc.html" title="AlgorithmRef - Reference to algorithm instance">AlgorithmRef<em>Reference to algorithm instance</em></a><li><li><a href="mutation.doc.html" title="Mutation - Root mutation type">Mutation<em>Root mutation type</em></a><li><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li><li><a href="subscription.doc.html" title="Subscription - Root subscription type">Subscription<em>Root subscription type</em></a><li></ul>
+        <ul class="require-by"><li><a href="algorithmref.doc.html" title="AlgorithmRef - Reference to an algorithm instance">AlgorithmRef<em>Reference to an algorithm instance</em></a><li><li><a href="mutation.doc.html" title="Mutation - Root mutation type">Mutation<em>Root mutation type</em></a><li><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li><li><a href="subscription.doc.html" title="Subscription - Root subscription type">Subscription<em>Root subscription type</em></a><li></ul>
     </div>
 </section>
 <footer>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="./styles/graphdoc.css" />
-    <title>Algorithm</title>
+    <title>AlgorithmDefinition</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet"><link type="text/css" rel="stylesheet" href="./assets/code.css" /><link type="text/css" rel="stylesheet" href="./assets/require-by.css" />
 </head>
 <body class="slds-scrollable--y">
@@ -140,14 +140,14 @@
 <div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
     <h4 class="slds-text-title--caps slds-p-around--medium">Objects</h4>
     <ul>
-        <li class="slds-is-active" title="Algorithm">
-            <a href="algorithm.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Algorithm
+        <li class="slds-is-active" title="AlgorithmDefinition">
+            <a href="algorithmdefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmDefinition
             </a>
         </li>
-        <li  title="AlgorithmMetadata">
-            <a href="algorithmmetadata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AlgorithmMetadata
+        <li  title="AlgorithmDefinitionQueryResults">
+            <a href="algorithmdefinitionqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmDefinitionQueryResults
             </a>
         </li>
         <li  title="AlgorithmRef">
@@ -155,19 +155,14 @@
                 AlgorithmRef
             </a>
         </li>
-        <li  title="AttributeDefinition">
-            <a href="attributedefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AttributeDefinition
-            </a>
-        </li>
-        <li  title="DataMetadata">
-            <a href="datametadata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                DataMetadata
-            </a>
-        </li>
         <li  title="DataRef">
             <a href="dataref.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 DataRef
+            </a>
+        </li>
+        <li  title="InputParameters">
+            <a href="inputparameters.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                InputParameters
             </a>
         </li>
         <li  title="Log">
@@ -180,14 +175,19 @@
                 Notification
             </a>
         </li>
+        <li  title="PageInfo">
+            <a href="pageinfo.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                PageInfo
+            </a>
+        </li>
+        <li  title="ParameterDefinition">
+            <a href="parameterdefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                ParameterDefinition
+            </a>
+        </li>
         <li  title="Property">
             <a href="property.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 Property
-            </a>
-        </li>
-        <li  title="UserEnteredParameters">
-            <a href="userenteredparameters.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                UserEnteredParameters
             </a>
         </li>
         <li  title="__Directive">
@@ -286,7 +286,7 @@
     </div>
     <div class="container">
         <p class="slds-text-title--caps slds-text-color--weak">OBJECT</p>
-        <h1 class="slds-text-heading--large">Algorithm</h1>
+        <h1 class="slds-text-heading--large">AlgorithmDefinition</h1>
         <div class="slds-text-body--regular"><p>Algorithm factory template for creating algorithm instances</p>
 </div>
     </div>
@@ -299,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">type</span> <span class="identifier">Algorithm</span> {</li><li></li><li><span class="tab"><span class="comment line">#   service pid that uniquely identifies the algorithm template</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Metadata information for the algorithm template</span></span></li><li><span class="tab"><span class="meta">metadata</span>: <a class="support type" href="algorithmmetadata.doc.html">AlgorithmMetadata</a>! </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">AlgorithmDefinition</span> {</li><li></li><li><span class="tab"><span class="comment line">#   service pid that uniquely identifies the algorithm template</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Input parameters required by the algorithm</span></span></li><li><span class="tab"><span class="meta">parameters</span>: <a class="support type" href="inputparameters.doc.html">InputParameters</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Formats and number of data inputs the algorithm accepts</span></span></li><li><span class="tab"><span class="meta">inData</span>: [<a class="support type" href="string.doc.html">String</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   Formats and number of data the algorithm produces</span></span></li><li><span class="tab"><span class="meta">outData</span>: [<a class="support type" href="string.doc.html">String</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   If this metadata element is used, it defines how the output Data produced by the </span></span></li><li><span class="tab"><span class="comment line">#   algorithm 	should be arranged. Data items can be given a parent as part of their </span></span></li><li><span class="tab"><span class="comment line">#   metadata (which usually 	means the Data was derived from the referenced Data). </span></span></li><li><span class="tab"><span class="comment line">#   If parentage is set to “default” then each 	of the algorithm’s output Data items </span></span></li><li><span class="tab"><span class="comment line">#   will have their parent Data item set as the first input Data 	item (if </span></span></li><li><span class="tab"><span class="comment line">#   applicable) by the CIShell-conforming application. If parentage is set to </span></span></li><li><span class="tab"><span class="comment line">#   something else or 	is not set at all, then it is up to the algorithm to set up </span></span></li><li><span class="tab"><span class="comment line">#   these relationships.</span></span></li><li><span class="tab"><span class="meta">parentage</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Type of the algorithm. If no type is set, then it is assumed to be of 'Standard </span></span></li><li><span class="tab"><span class="comment line">#   Algorithm' type</span></span></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="algorithmtype.doc.html">AlgorithmType</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Specifies if the algorithm can be run remotely. Valid values are true or false. 	</span></span></li><li><span class="tab"><span class="comment line">#   If this element is not set, then it is assumed that it cannot be run remotely.</span></span></li><li><span class="tab"><span class="meta">remotable</span>: <a class="support type" href="boolean.doc.html">Boolean</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A human-readable short name for the algorithm</span></span></li><li><span class="tab"><span class="meta">label</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Provides more details on workings of the algorithm</span></span></li><li><span class="tab"><span class="meta">description</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Specifies where on the menu an algorithm is to be placed if a menu bar is used. 	</span></span></li><li><span class="tab"><span class="comment line">#   Otherwise, it can act as a primitive hierarchical classification of the </span></span></li><li><span class="tab"><span class="comment line">#   algorithm.</span></span></li><li><span class="tab"><span class="meta">menuPath</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   For converter algorithms, specifies the types of conversion which can be lossy </span></span></li><li><span class="tab"><span class="comment line">#   or loseless</span></span></li><li><span class="tab"><span class="meta">conversion</span>: <a class="support type" href="conversiontype.doc.html">ConversionType</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A comma separated list of the authors of the abstract algorithm</span></span></li><li><span class="tab"><span class="meta">authors</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A comma separated list of the developers who implemented the algorithm in code</span></span></li><li><span class="tab"><span class="meta">implementers</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A comma separated list of the developers who integrated the algorithm code as a </span></span></li><li><span class="tab"><span class="comment line">#   compliant CIShell algorithm</span></span></li><li><span class="tab"><span class="meta">integrators</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A URL to relevant documentation for the algorithm</span></span></li><li><span class="tab"><span class="meta">documentationUrl</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A formal reference to a paper explaining the abstract algorithm</span></span></li><li><span class="tab"><span class="meta">reference</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A URL to a paper explaining the abstract algorithm</span></span></li><li><span class="tab"><span class="meta">referenceUrl</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   A comma separated list of the programming languages used to implement and </span></span></li><li><span class="tab"><span class="comment line">#   integrate the algorithm code</span></span></li><li><span class="tab"><span class="meta">writtenIn</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Additional metadata information apart from standard metadata</span></span></li><li><span class="tab"><span class="meta">otherProperties</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
@@ -310,7 +310,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="algorithmref.doc.html" title="AlgorithmRef - Reference to algorithm instance">AlgorithmRef<em>Reference to algorithm instance</em></a><li><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li><li><a href="subscription.doc.html" title="Subscription - Root subscription type">Subscription<em>Root subscription type</em></a><li></ul>
+        <ul class="require-by"><li><a href="algorithmdefinitionqueryresults.doc.html" title="AlgorithmDefinitionQueryResults - Paginated Algorithm Definition Query Results">AlgorithmDefinitionQueryResults<em>Paginated Algorithm Definition Query Results</em></a><li><li><a href="algorithmref.doc.html" title="AlgorithmRef - Reference to an algorithm instance">AlgorithmRef<em>Reference to an algorithm instance</em></a><li><li><a href="subscription.doc.html" title="Subscription - Root subscription type">Subscription<em>Root subscription type</em></a><li></ul>
     </div>
 </section>
 <footer>

@@ -6,7 +6,7 @@ const scheduler = require('./scheduler');
 const logger = require('./logger');
 const preferences = require('./preferences');
 
-const scalars = 
+const scalars =
 `\
 # scalar types
 # Identifier for the given object
@@ -31,7 +31,7 @@ schema {
 	# root query type
 	query: Query
 
-	# root mutation type 
+	# root mutation type
 	mutation: Mutation
 
 	# root subscription type
@@ -73,10 +73,13 @@ type Subscription{\
 
 const pageInfo = `\
 # type to store info related to pagination
-# type PageInfo {
-# 	hasNextPage: Boolean!
-# 	hasPreviousPage: Boolean!
-# }
+type PageInfo {
+	# Whether there is more data to return in another page
+	hasNextPage: Boolean!
+
+	# If there is a previous page of data
+	hasPreviousPage: Boolean!
+}
 `
 
 module.exports = {scalars, schema, queries, mutations, subscriptions, pageInfo}

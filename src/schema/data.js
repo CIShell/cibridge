@@ -7,12 +7,6 @@ type DataRef {
 	# format of the data
 	format: String!
 
-	# Metadata information for the data
-	metadata: DataMetadata!
-}
-
-# Stores the metadata associated with the data object
-type DataMetadata {
 	# The label to give the data object if displayed
 	label: String
 
@@ -56,34 +50,34 @@ enum DataType {
 
 	# The data model is abstractly a matrix
 	MATRIX
-	
+
 	# the data model is a 'model' object
 	MODEL
-	
+
 	# The data model is abstractly a network
 	NETWORK
-	
+
 	# The data model is abstractly a data plot
 	PLOT
-	
+
 	# The data model is a JPEG object
 	RASTERIMAGE
-	
+
 	# The data model is an 'R Instance' object
 	RINSTANCE
-	
+
 	# The data model is abstractly a table
 	TABLE
-	
+
 	# The data model is abstractly a plain text file
 	TEXT
-	
+
 	# The data model is abstractly a tree
 	TREE
-	
+
 	# The data model is abstractly an unknown type
 	UNKNOWN
-	
+
 	# The data model is a PostScript file
 	VECTORIMAGE
 }

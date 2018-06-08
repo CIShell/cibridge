@@ -1,6 +1,10 @@
 const types = `\
 # Type to create client side notifications
-type Notification{
+type Notification {
+
+	# Identifier for the object
+	id: ID
+
 	# Type of the notification
 	type: NotificationType
 
@@ -14,7 +18,7 @@ type Notification{
 	detail: String
 
 	# List of parameters which includes the type, name, description and options for dropdown boxes
-	parameters: [AttributeDefinition]
+	parameters: [ParameterDefinition]
 
 	# Says if the notification is closed
 	isClosed: Boolean
@@ -39,7 +43,7 @@ input NotificationFilter {
 const enums = `\
 # Specifies the general type of notifications
 enum NotificationType {
-	# Type of alert notifications to inform the user of important fact and requires user confirmation before preceeding 
+	# Type of alert notifications to inform the user of important fact and requires user confirmation before preceeding
 	CONFIRM
 
 	# Type of notifications to report an error or a problem that has occured
@@ -47,13 +51,13 @@ enum NotificationType {
 
 	# Type of notifications to ask form inputs from user
 	FORM
-	
+
 	# Type of notifications to simply inform the user about a situation
 	INFORMATION
-	
+
 	# Type of notifications that asks the user whether an action should proceed or not. It can be a simple YES or NO question.
 	QUESTION
-	
+
 	# Type of notifications to warn user of a situation which requires user's attention
 	WARNING
 

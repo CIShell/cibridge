@@ -1,17 +1,17 @@
 const types = `\
-# Reference to algorithm instance
+# Reference to an algorithm instance
 type AlgorithmRef {
 	# Reference ID for the algorithm instance
 	id: ID!
-	
+
 	# Data reference for the input data
 	inData: [DataRef!]
-	
+
 	# Additional parameters
 	options: [Property!]
-	
+
 	# The algorithm factory template used to create the instance
-	algorithm: Algorithm!
+	algorithmDefinition: AlgorithmDefinition!
 
 	# Current state of the algorithm instance
 	state: AlgorithmState
@@ -27,18 +27,12 @@ type AlgorithmRef {
 }
 
 # Algorithm factory template for creating algorithm instances
-type Algorithm {
+type AlgorithmDefinition {
 	# service pid that uniquely identifies the algorithm template
 	id: ID!
 
-	# Metadata information for the algorithm template
-	metadata: AlgorithmMetadata!
-}
-
-# Algorithm Metadata type that provides relevant information about the algorithm template
-type AlgorithmMetadata {
-	# User entered parameters required for the algorithm
-	parameters: UserEnteredParameters
+	# Input parameters required by the algorithm
+	parameters: InputParameters
 
 	# Formats and number of data inputs the algorithm accepts
 	inData: [String!]
@@ -82,7 +76,7 @@ type AlgorithmMetadata {
 
 	# A comma separated list of the developers who integrated the algorithm code as a compliant CIShell algorithm
 	integrators: String
-	
+
 	# A URL to relevant documentation for the algorithm
 	documentationUrl: String
 
@@ -100,7 +94,7 @@ type AlgorithmMetadata {
 }
 
 # Specifies parameter inputs required for the algorithm
-type UserEnteredParameters {
+type InputParameters {
 	# Identifier for the object
 	id: ID
 
@@ -110,13 +104,22 @@ type UserEnteredParameters {
 	# Description
 	description: String
 
-	# List of attributes
-	attributes: [AttributeDefinition!]
+	# List of specific parameters
+	parameters: [ParameterDefinition!]
+}
+
+# Paginated Algorithm Definition Query Results
+type AlgorithmDefinitionQueryResults {
+	# A list of matching algorithm definitions
+	results: [AlgorithmDefinition!]!
+
+	# Pagination information
+	pageInfo: PageInfo!
 }
 `
 
 const inputTypes = `\
-# Input type for filtering algorithms based on 
+# Input type for filtering algorithms based on
 input AlgorithmFilter {
 	# Identifier for the algorithm filter object
 	id: ID

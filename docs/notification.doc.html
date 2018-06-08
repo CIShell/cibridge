@@ -140,14 +140,14 @@
 <div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
     <h4 class="slds-text-title--caps slds-p-around--medium">Objects</h4>
     <ul>
-        <li  title="Algorithm">
-            <a href="algorithm.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Algorithm
+        <li  title="AlgorithmDefinition">
+            <a href="algorithmdefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmDefinition
             </a>
         </li>
-        <li  title="AlgorithmMetadata">
-            <a href="algorithmmetadata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AlgorithmMetadata
+        <li  title="AlgorithmDefinitionQueryResults">
+            <a href="algorithmdefinitionqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmDefinitionQueryResults
             </a>
         </li>
         <li  title="AlgorithmRef">
@@ -155,19 +155,14 @@
                 AlgorithmRef
             </a>
         </li>
-        <li  title="AttributeDefinition">
-            <a href="attributedefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AttributeDefinition
-            </a>
-        </li>
-        <li  title="DataMetadata">
-            <a href="datametadata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                DataMetadata
-            </a>
-        </li>
         <li  title="DataRef">
             <a href="dataref.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 DataRef
+            </a>
+        </li>
+        <li  title="InputParameters">
+            <a href="inputparameters.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                InputParameters
             </a>
         </li>
         <li  title="Log">
@@ -180,14 +175,19 @@
                 Notification
             </a>
         </li>
+        <li  title="PageInfo">
+            <a href="pageinfo.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                PageInfo
+            </a>
+        </li>
+        <li  title="ParameterDefinition">
+            <a href="parameterdefinition.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                ParameterDefinition
+            </a>
+        </li>
         <li  title="Property">
             <a href="property.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 Property
-            </a>
-        </li>
-        <li  title="UserEnteredParameters">
-            <a href="userenteredparameters.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                UserEnteredParameters
             </a>
         </li>
         <li  title="__Directive">
@@ -299,7 +299,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Notification</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Type of the notification</span></span></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="notificationtype.doc.html">NotificationType</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Short title of the notification</span></span></li><li><span class="tab"><span class="meta">title</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Message of the notification</span></span></li><li><span class="tab"><span class="meta">message</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Detailed description for the notification</span></span></li><li><span class="tab"><span class="meta">detail</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   List of parameters which includes the type, name, description and options for </span></span></li><li><span class="tab"><span class="comment line">#   dropdown boxes</span></span></li><li><span class="tab"><span class="meta">parameters</span>: [<a class="support type" href="attributedefinition.doc.html">AttributeDefinition</a>] </span></li><li></li><li><span class="tab"><span class="comment line">#   Says if the notification is closed</span></span></li><li><span class="tab"><span class="meta">isClosed</span>: <a class="support type" href="boolean.doc.html">Boolean</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Response from the user as a list of key:value mappings</span></span></li><li><span class="tab"><span class="meta">response</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Notification</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Identifier for the object</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Type of the notification</span></span></li><li><span class="tab"><span class="meta">type</span>: <a class="support type" href="notificationtype.doc.html">NotificationType</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Short title of the notification</span></span></li><li><span class="tab"><span class="meta">title</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Message of the notification</span></span></li><li><span class="tab"><span class="meta">message</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Detailed description for the notification</span></span></li><li><span class="tab"><span class="meta">detail</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   List of parameters which includes the type, name, description and options for </span></span></li><li><span class="tab"><span class="comment line">#   dropdown boxes</span></span></li><li><span class="tab"><span class="meta">parameters</span>: [<a class="support type" href="parameterdefinition.doc.html">ParameterDefinition</a>] </span></li><li></li><li><span class="tab"><span class="comment line">#   Says if the notification is closed</span></span></li><li><span class="tab"><span class="meta">isClosed</span>: <a class="support type" href="boolean.doc.html">Boolean</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Response from the user as a list of key:value mappings</span></span></li><li><span class="tab"><span class="meta">response</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>

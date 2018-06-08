@@ -19,7 +19,7 @@ schema {
 	# root query type
 	query: Query
 
-	# root mutation type 
+	# root mutation type
 	mutation: Mutation
 
 	# root subscription type
@@ -29,8 +29,8 @@ schema {
 # Root query type
 type Query{	
 	# Returns all the algorithm factory templates matching the given filter criteria
-	getAlgorithmDef(filter: AlgorithmFilter): [Algorithm!]
-	
+	getAlgorithmDefinition(filter: AlgorithmFilter): AlgorithmDefinitionQueryResults
+
 	# Returns all the algorithm instances matching the given filter criteria
 	getAlgorithmRef(filter: AlgorithmFilter): [AlgorithmRef!]
 
@@ -81,8 +81,8 @@ type Query{
 	
 	# User Preferences
 	# Currently in CIShell Spec, but not really used.
-	# getUserPreferences(algorithm: Algorithm): Preferences
-	# getSystemPreferences(algorithm: Algorithm): Preferences
+	# getUserPreferences(algorithm: AlgorithmDefinition): Preferences
+	# getSystemPreferences(algorithm: AlgorithmDefinition): Preferences
 	# getSystemPreferences: Preferences
 
 }
@@ -94,13 +94,13 @@ type Mutation{
 
 	# Create instance of the given algorithm template using the data references
 	createAlgorithm(algorithmId: ID!, dataRefIds: [ID!], params: [PropertyInput!]): AlgorithmRef
-	
+
 	# Get current state of the specified algorithm
 	refreshAlgorithmRef(algorithmRefId: ID): AlgorithmRef
-	
+
 	# Cancel or uncancel the referenced algorithm based on the passed boolean value
 	setAlgorithmCancelled(algorithmRefId: ID!, bool: Boolean): AlgorithmRef
-	
+
 	# Pause or unpause the referenced algorithm based on the passed boolean value
 	setAlgorithmPaused(algorithmRefId: ID!, bool: Boolean): AlgorithmRef
 
@@ -149,10 +149,10 @@ type Mutation{
 # Root subscription type
 type Subscription{	
 	# Receives the algorithm template when it is added
-	algorithmAdded: Algorithm
+	algorithmDefinitionAdded: AlgorithmDefinition
 
 	# Receives the algorithm template when it is removed
-	algorithmRemoved: Algorithm
+	algorithmDefinitionRemoved: AlgorithmDefinition
 
 	# Receives the reference to an algorithm instance matching the filter criteria when it is updated
 	algorithmRefUpdated(filter: AlgorithmFilter): AlgorithmRef
@@ -163,7 +163,7 @@ type Subscription{
 
 	
 	# Receives the reference to a data object matching the filter criteria when it is updated
-	dataRefUpdated(filter: DataFilter): DataRef
+	dataUpdated(filter: DataFilter): DataRef
 
 	# Receives the reference to a data object matching the filter criteria when it is added to the data manager
 	dataAdded(filter: DataFilter): DataRef
@@ -171,7 +171,7 @@ type Subscription{
 	# Receives the reference to a data object matching the filter criteria when its label is changed
 	dataLabelChanged(filter: DataFilter): DataRef
 
-	# Receives the reference to a data object matching the filter criteria when it is removed from the data manager 
+	# Receives the reference to a data object matching the filter criteria when it is removed from the data manager
 	dataRemoved(filter: DataFilter): DataRef
 
 	# Receives the references to data objects which have been selected in the data manager
@@ -210,24 +210,27 @@ type Subscription{
 }
 
 # type to store info related to pagination
-# type PageInfo {
-# 	hasNextPage: Boolean!
-# 	hasPreviousPage: Boolean!
-# }
+type PageInfo {
+	# Whether there is more data to return in another page
+	hasNextPage: Boolean!
 
-# Reference to algorithm instance
+	# If there is a previous page of data
+	hasPreviousPage: Boolean!
+}
+
+# Reference to an algorithm instance
 type AlgorithmRef {
 	# Reference ID for the algorithm instance
 	id: ID!
-	
+
 	# Data reference for the input data
 	inData: [DataRef!]
-	
+
 	# Additional parameters
 	options: [Property!]
-	
+
 	# The algorithm factory template used to create the instance
-	algorithm: Algorithm!
+	algorithmDefinition: AlgorithmDefinition!
 
 	# Current state of the algorithm instance
 	state: AlgorithmState
@@ -243,18 +246,12 @@ type AlgorithmRef {
 }
 
 # Algorithm factory template for creating algorithm instances
-type Algorithm {
+type AlgorithmDefinition {
 	# service pid that uniquely identifies the algorithm template
 	id: ID!
 
-	# Metadata information for the algorithm template
-	metadata: AlgorithmMetadata!
-}
-
-# Algorithm Metadata type that provides relevant information about the algorithm template
-type AlgorithmMetadata {
-	# User entered parameters required for the algorithm
-	parameters: UserEnteredParameters
+	# Input parameters required by the algorithm
+	parameters: InputParameters
 
 	# Formats and number of data inputs the algorithm accepts
 	inData: [String!]
@@ -291,7 +288,7 @@ type AlgorithmMetadata {
 
 	# A comma separated list of the developers who integrated the algorithm code as a compliant CIShell algorithm
 	integrators: String
-	
+
 	# A URL to relevant documentation for the algorithm
 	documentationUrl: String
 
@@ -309,7 +306,7 @@ type AlgorithmMetadata {
 }
 
 # Specifies parameter inputs required for the algorithm
-type UserEnteredParameters {
+type InputParameters {
 	# Identifier for the object
 	id: ID
 
@@ -319,11 +316,20 @@ type UserEnteredParameters {
 	# Description
 	description: String
 
-	# List of attributes
-	attributes: [AttributeDefinition!]
+	# List of specific parameters
+	parameters: [ParameterDefinition!]
 }
 
-# Input type for filtering algorithms based on 
+# Paginated Algorithm Definition Query Results
+type AlgorithmDefinitionQueryResults {
+	# A list of matching algorithm definitions
+	results: [AlgorithmDefinition!]!
+
+	# Pagination information
+	pageInfo: PageInfo!
+}
+
+# Input type for filtering algorithms based on
 input AlgorithmFilter {
 	# Identifier for the algorithm filter object
 	id: ID
@@ -400,12 +406,6 @@ type DataRef {
 	# format of the data
 	format: String!
 
-	# Metadata information for the data
-	metadata: DataMetadata!
-}
-
-# Stores the metadata associated with the data object
-type DataMetadata {
 	# The label to give the data object if displayed
 	label: String
 
@@ -441,40 +441,44 @@ enum DataType {
 
 	# The data model is abstractly a matrix
 	MATRIX
-	
+
 	# the data model is a 'model' object
 	MODEL
-	
+
 	# The data model is abstractly a network
 	NETWORK
-	
+
 	# The data model is abstractly a data plot
 	PLOT
-	
+
 	# The data model is a JPEG object
 	RASTERIMAGE
-	
+
 	# The data model is an 'R Instance' object
 	RINSTANCE
-	
+
 	# The data model is abstractly a table
 	TABLE
-	
+
 	# The data model is abstractly a plain text file
 	TEXT
-	
+
 	# The data model is abstractly a tree
 	TREE
-	
+
 	# The data model is abstractly an unknown type
 	UNKNOWN
-	
+
 	# The data model is a PostScript file
 	VECTORIMAGE
 }
 
 # Type to create client side notifications
-type Notification{
+type Notification {
+
+	# Identifier for the object
+	id: ID
+
 	# Type of the notification
 	type: NotificationType
 
@@ -488,7 +492,7 @@ type Notification{
 	detail: String
 
 	# List of parameters which includes the type, name, description and options for dropdown boxes
-	parameters: [AttributeDefinition]
+	parameters: [ParameterDefinition]
 
 	# Says if the notification is closed
 	isClosed: Boolean
@@ -511,7 +515,7 @@ input NotificationFilter {
 
 # Specifies the general type of notifications
 enum NotificationType {
-	# Type of alert notifications to inform the user of important fact and requires user confirmation before preceeding 
+	# Type of alert notifications to inform the user of important fact and requires user confirmation before preceeding
 	CONFIRM
 
 	# Type of notifications to report an error or a problem that has occured
@@ -519,13 +523,13 @@ enum NotificationType {
 
 	# Type of notifications to ask form inputs from user
 	FORM
-	
+
 	# Type of notifications to simply inform the user about a situation
 	INFORMATION
-	
+
 	# Type of notifications that asks the user whether an action should proceed or not. It can be a simple YES or NO question.
 	QUESTION
-	
+
 	# Type of notifications to warn user of a situation which requires user's attention
 	WARNING
 
@@ -586,7 +590,7 @@ type Property {
 }
 
 # Definition of the attributes for the user entered parameters which includes name, type and options for dropdown boxes
-type AttributeDefinition {
+type ParameterDefinition {
 	# Identifier for the attribute
 	id: String!
 	
@@ -612,7 +616,7 @@ input PropertyInput {
 	value: Value!
 }
 
-# Specifies several primitive data types for AttributeDefinition
+# Specifies several primitive data types for ParameterDefinition
 enum AttributeType {
 	# Boolean has only two possible values: true and false
 	BOOLEAN
