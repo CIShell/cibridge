@@ -70,6 +70,7 @@ type Query{
 	getLogs(filter: LogFilter): LogQueryResults!
 
 	
+	# TODO: Decide on preferences strategy
 	# User Preferences
 	# Currently in CIShell Spec, but not used.
 	# getUserPreferences(algorithm: AlgorithmDefinition): Preferences
@@ -172,7 +173,7 @@ type Subscription{
 
 }
 
-# type to store info related to pagination
+# type to store info related to pagination. TODO: Finalize our pagination strategy
 type PageInfo {
 	# Whether there is more data to return in another page
 	hasNextPage: Boolean!
@@ -181,8 +182,8 @@ type PageInfo {
 	hasPreviousPage: Boolean!
 }
 
-# type used for pageable query results
-type QueryResults {
+# interface used for pageable query results
+interface QueryResults {
 	# Pagination information
 	pageInfo: PageInfo!
 }
@@ -289,23 +290,23 @@ type InputParameters {
 	parameters: [ParameterDefinition!]
 }
 
-# Algorithm Definition Results
-type AlgorithmDefinitionResults  {
+# Paginated Algorithm Definition Query Results
+type AlgorithmDefinitionQueryResults implements QueryResults  {
 	# A list of matching algorithm definitions
 	results: [AlgorithmDefinition!]!
+
+	# Pagination information
+	pageInfo: PageInfo!
 }
 
-# AlgorithmInstance Results
-type AlgorithmInstanceResults  {
+# Paginated Algorithm Instance Query Results
+type AlgorithmInstanceQueryResults implements QueryResults  {
 	# A list of matching algorithm references
 	results: [AlgorithmInstance!]!
+
+	# Pagination information
+	pageInfo: PageInfo!
 }
-
-# Paginated Algorithm Definition Query Results
-union AlgorithmDefinitionQueryResults = AlgorithmDefinitionResults | QueryResults
-
-# Paginated AlgorithmInstance Query Results
-union AlgorithmInstanceQueryResults = AlgorithmInstanceResults | QueryResults
 
 # Input type for filtering algorithms based on
 input AlgorithmFilter {
@@ -363,7 +364,7 @@ enum AlgorithmState {
 
 # The specific types of algorithm
 enum AlgorithmType {
-	# A type of algorithm for converting data of one type to another
+	# A type of algorithm for converting data of one type to another. 	TODO: make converters be a separate entity from Algorithms
 	CONVERTER
 
 	# A type of algorithm for providing pre-generated data for use in the CIShell platform
@@ -412,14 +413,14 @@ type Data {
 	properties: [Property!]
 }
 
-# Data Results
-type DataResults  {
+# Paginated Algorithm Definition Query Results
+type DataQueryResults implements QueryResults {
 	# A list of matching algorithm references
 	results: [Data!]!
-}
 
-# Paginated Algorithm Definition Query Results
-union DataQueryResults = DataResults | QueryResults
+	# Pagination information
+	pageInfo: PageInfo!
+}
 
 # Input type to filter data objects
 input DataFilter {
@@ -542,14 +543,14 @@ type Notification {
 	confirmationResponse: Boolean
 }
 
-# Notification Results
-type NotificationResults  {
+# Paginated Notification Query Results
+type NotificationQueryResults implements QueryResults  {
 	# A list of matching notification references
 	results: [Notification!]!
-}
 
-# Paginated Algorithm Definition Query Results
-union NotificationQueryResults = NotificationResults | QueryResults
+	# Pagination information
+	pageInfo: PageInfo!
+}
 
 # Input filter to match notifications
 input NotificationFilter {
@@ -618,14 +619,14 @@ type Log {
 	timestamp: Time
 }
 
-# Log Results
-type LogResults  {
+# Paginated Log Query Results
+type LogQueryResults implements QueryResults  {
 	# A list of matching log references
 	results: [Log!]!
-}
 
-# Paginated Algorithm Definition Query Results
-union LogQueryResults = LogResults | QueryResults
+	# Pagination information
+	pageInfo: PageInfo!
+}
 
 # Filter input type to match logs with certain criteria
 input LogFilter {

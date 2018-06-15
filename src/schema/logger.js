@@ -14,14 +14,14 @@ type Log {
 	timestamp: Time
 }
 
-# Log Results
-type LogResults  {
+# Paginated Log Query Results
+type LogQueryResults implements QueryResults  {
 	# A list of matching log references
 	results: [Log!]!
-}
 
-# Paginated Algorithm Definition Query Results
-union LogQueryResults = LogResults | QueryResults
+	# Pagination information
+	pageInfo: PageInfo!
+}
 `
 
 const inputTypes = `\

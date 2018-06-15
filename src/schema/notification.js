@@ -36,14 +36,14 @@ type Notification {
 	confirmationResponse: Boolean
 }
 
-# Notification Results
-type NotificationResults  {
+# Paginated Notification Query Results
+type NotificationQueryResults implements QueryResults  {
 	# A list of matching notification references
 	results: [Notification!]!
-}
 
-# Paginated Algorithm Definition Query Results
-union NotificationQueryResults = NotificationResults | QueryResults
+	# Pagination information
+	pageInfo: PageInfo!
+}
 `
 const inputTypes = `\
 # Input filter to match notifications

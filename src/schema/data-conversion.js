@@ -12,6 +12,4 @@ const mutations = `
 	convertData(dataId: ID!, outFormat: String!): Data
 `
 
-// TODO: make converters be a separate entity from Algorithms
-
 module.exports = {queries, mutations}

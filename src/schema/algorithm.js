@@ -105,23 +105,23 @@ type InputParameters {
 	parameters: [ParameterDefinition!]
 }
 
-# Algorithm Definition Results
-type AlgorithmDefinitionResults  {
+# Paginated Algorithm Definition Query Results
+type AlgorithmDefinitionQueryResults implements QueryResults  {
 	# A list of matching algorithm definitions
 	results: [AlgorithmDefinition!]!
+
+	# Pagination information
+	pageInfo: PageInfo!
 }
 
-# AlgorithmInstance Results
-type AlgorithmInstanceResults  {
+# Paginated Algorithm Instance Query Results
+type AlgorithmInstanceQueryResults implements QueryResults  {
 	# A list of matching algorithm references
 	results: [AlgorithmInstance!]!
+
+	# Pagination information
+	pageInfo: PageInfo!
 }
-
-# Paginated Algorithm Definition Query Results
-union AlgorithmDefinitionQueryResults = AlgorithmDefinitionResults | QueryResults
-
-# Paginated AlgorithmInstance Query Results
-union AlgorithmInstanceQueryResults = AlgorithmInstanceResults | QueryResults
 `
 
 const inputTypes = `\
@@ -183,7 +183,8 @@ enum AlgorithmState {
 
 # The specific types of algorithm
 enum AlgorithmType {
-	# A type of algorithm for converting data of one type to another
+	# A type of algorithm for converting data of one type to another. \
+	TODO: make converters be a separate entity from Algorithms
 	CONVERTER
 
 	# A type of algorithm for providing pre-generated data for use in the CIShell platform

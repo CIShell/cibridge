@@ -69,7 +69,8 @@ type Subscription{\
 `
 
 const pageInfo = `\
-# type to store info related to pagination
+# type to store info related to pagination. \
+TODO: Finalize our pagination strategy
 type PageInfo {
 	# Whether there is more data to return in another page
 	hasNextPage: Boolean!
@@ -78,8 +79,8 @@ type PageInfo {
 	hasPreviousPage: Boolean!
 }
 
-# type used for pageable query results
-type QueryResults {
+# interface used for pageable query results
+interface QueryResults {
 	# Pagination information
 	pageInfo: PageInfo!
 }

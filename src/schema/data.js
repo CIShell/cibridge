@@ -30,14 +30,14 @@ type Data {
 	properties: [Property!]
 }
 
-# Data Results
-type DataResults  {
+# Paginated Algorithm Definition Query Results
+type DataQueryResults implements QueryResults {
 	# A list of matching algorithm references
 	results: [Data!]!
-}
 
-# Paginated Algorithm Definition Query Results
-union DataQueryResults = DataResults | QueryResults
+	# Pagination information
+	pageInfo: PageInfo!
+}
 `
 
 const inputTypes = `\

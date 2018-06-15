@@ -133,31 +133,11 @@
     </ul>
 </div>
 <div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
-    <h4 class="slds-text-title--caps slds-p-around--medium">Unions</h4>
+    <h4 class="slds-text-title--caps slds-p-around--medium">Interfaces</h4>
     <ul>
-        <li  title="AlgorithmDefinitionQueryResults">
-            <a href="algorithmdefinitionqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AlgorithmDefinitionQueryResults
-            </a>
-        </li>
-        <li  title="AlgorithmInstanceQueryResults">
-            <a href="algorithminstancequeryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AlgorithmInstanceQueryResults
-            </a>
-        </li>
-        <li  title="DataQueryResults">
-            <a href="dataqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                DataQueryResults
-            </a>
-        </li>
-        <li  title="LogQueryResults">
-            <a href="logqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                LogQueryResults
-            </a>
-        </li>
-        <li  title="NotificationQueryResults">
-            <a href="notificationqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NotificationQueryResults
+        <li  title="QueryResults">
+            <a href="queryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                QueryResults
             </a>
         </li>
     </ul>
@@ -170,9 +150,9 @@
                 AlgorithmDefinition
             </a>
         </li>
-        <li  title="AlgorithmDefinitionResults">
-            <a href="algorithmdefinitionresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AlgorithmDefinitionResults
+        <li  title="AlgorithmDefinitionQueryResults">
+            <a href="algorithmdefinitionqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmDefinitionQueryResults
             </a>
         </li>
         <li  title="AlgorithmInstance">
@@ -180,9 +160,9 @@
                 AlgorithmInstance
             </a>
         </li>
-        <li  title="AlgorithmInstanceResults">
-            <a href="algorithminstanceresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AlgorithmInstanceResults
+        <li  title="AlgorithmInstanceQueryResults">
+            <a href="algorithminstancequeryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                AlgorithmInstanceQueryResults
             </a>
         </li>
         <li  title="Data">
@@ -190,9 +170,9 @@
                 Data
             </a>
         </li>
-        <li  title="DataResults">
-            <a href="dataresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                DataResults
+        <li  title="DataQueryResults">
+            <a href="dataqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                DataQueryResults
             </a>
         </li>
         <li  title="InputParameters">
@@ -205,9 +185,9 @@
                 Log
             </a>
         </li>
-        <li  title="LogResults">
-            <a href="logresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                LogResults
+        <li  title="LogQueryResults">
+            <a href="logqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                LogQueryResults
             </a>
         </li>
         <li  title="Notification">
@@ -215,9 +195,9 @@
                 Notification
             </a>
         </li>
-        <li  title="NotificationResults">
-            <a href="notificationresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NotificationResults
+        <li  title="NotificationQueryResults">
+            <a href="notificationqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                NotificationQueryResults
             </a>
         </li>
         <li  title="PageInfo">
@@ -233,11 +213,6 @@
         <li  title="Property">
             <a href="property.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 Property
-            </a>
-        </li>
-        <li  title="QueryResults">
-            <a href="queryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                QueryResults
             </a>
         </li>
         <li  title="__Directive">
@@ -359,7 +334,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">AlgorithmType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm for converting data of one type to another</span></span></li><li><span class="tab"><span class="meta">CONVERTER</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm for providing pre-generated data for use in the CIShell </span></span></li><li><span class="tab"><span class="comment line">#   platform</span></span></li><li><span class="tab"><span class="meta">DATASET</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The default type of algorithm</span></span></li><li><span class="tab"><span class="meta">STANDARD</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm which checks either an incoming or outgoing file to be sure </span></span></li><li><span class="tab"><span class="comment line">#   it is of the type specified</span></span></li><li><span class="tab"><span class="meta">VALIDATOR</span></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">AlgorithmType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm for converting data of one type to another. 	TODO: make </span></span></li><li><span class="tab"><span class="comment line">#   converters be a separate entity from Algorithms</span></span></li><li><span class="tab"><span class="meta">CONVERTER</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm for providing pre-generated data for use in the CIShell </span></span></li><li><span class="tab"><span class="comment line">#   platform</span></span></li><li><span class="tab"><span class="meta">DATASET</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The default type of algorithm</span></span></li><li><span class="tab"><span class="meta">STANDARD</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm which checks either an incoming or outgoing file to be sure </span></span></li><li><span class="tab"><span class="comment line">#   it is of the type specified</span></span></li><li><span class="tab"><span class="meta">VALIDATOR</span></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
