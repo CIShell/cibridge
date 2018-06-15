@@ -11,9 +11,6 @@ scalar Time
 # data type to store file information
 scalar File
 
-# data type equivalent to null value
-scalar Void
-
 # GraphQL root schema
 schema {
 	# root query type
@@ -29,42 +26,36 @@ schema {
 # Root query type
 type Query{	
 	# Returns all the algorithm factory templates matching the given filter criteria
-	getAlgorithmDefinition(filter: AlgorithmFilter): AlgorithmDefinitionQueryResults
+	getAlgorithmDefinitions(filter: AlgorithmFilter): AlgorithmDefinitionQueryResults!
 
 	# Returns all the algorithm instances matching the given filter criteria
-	getAlgorithmRef(filter: AlgorithmFilter): [AlgorithmRef!]
+	getAlgorithmInstances(filter: AlgorithmFilter): AlgorithmInstanceQueryResults!
 
 	# Validates the given data that is proposed to be given to the algorithm
-	validateData(algorithmId: ID!, dataRefIds: [ID]!): String
-
-	# Downloads the data associated with the given data reference as a file
-	downloadData(dataRefId: ID!): File
+	validateData(algorithmId: ID!, dataIds: [ID]!): String
 
 	
 	# Determines the input format from the referenced data and 	finds the chain of converter algorithms to convert the data to the specified output format
-	findConverters(dataRefId: ID!, outFormat: String!): [AlgorithmRef!]!
+	findConverters(dataId: ID!, outFormat: String!): [AlgorithmInstance!]!
 
 	# Find the chain of converter algorithms to convert data from given input format to given output format
-	findConvertersByFormat(inFormat: String!, outFormat: String!): [AlgorithmRef!]!
-
-	
-	# Returns the notifications matching the specified criteria given in the filter object
-	getNotifications(filter: NotificationFilter!): [Notification!]
-
-	# Returns if the specified notification is closed or not
-	isClosed(notificationId: ID!): Boolean
+	findConvertersByFormat(inFormat: String!, outFormat: String!): [AlgorithmInstance!]!
 
 	
 	# Returns references for all the data objects that matches the given filter
-	getData(filter: DataFilter): [DataRef]
+	getData(filter: DataFilter): DataQueryResults!
 
-	# Returns the data references for the selected data objects in the data manager
-	getSelectedData: [DataRef!]
+	# Downloads the data associated with the given data reference as a file
+	downloadData(dataId: ID!): File!
 
 	
-	# Returns the list of algorithms instances that the scheduler has scheduled. 	This includes the algorithms that are currently running and the ones queued to be run.
-	getScheduledAlgorithms: [AlgorithmRef!]
+	# Returns the notifications matching the specified criteria given in the filter object
+	getNotifications(filter: NotificationFilter!): NotificationQueryResults!
 
+	# Returns if the specified notification is closed or not
+	isClosed(notificationId: ID!): Boolean!
+
+	
 	# Returns if the scheduler is empty or not
 	isSchedulerEmpty: Boolean
 
@@ -76,11 +67,11 @@ type Query{
 
 	
 	# Returns all the logs that matches the given log filter
-	getLogs(filter: LogFilter): [Log!]!
+	getLogs(filter: LogFilter): LogQueryResults!
 
 	
 	# User Preferences
-	# Currently in CIShell Spec, but not really used.
+	# Currently in CIShell Spec, but not used.
 	# getUserPreferences(algorithm: AlgorithmDefinition): Preferences
 	# getSystemPreferences(algorithm: AlgorithmDefinition): Preferences
 	# getSystemPreferences: Preferences
@@ -89,123 +80,95 @@ type Query{
 
 # Root mutation type
 type Mutation{	
-	# Uploads the data file and creates the data reference in the data manager
-	uploadData(file: File!, format: String): DataRef
-
 	# Create instance of the given algorithm template using the data references
-	createAlgorithm(algorithmId: ID!, dataRefIds: [ID!], params: [PropertyInput!]): AlgorithmRef
-
-	# Get current state of the specified algorithm
-	refreshAlgorithmRef(algorithmRefId: ID): AlgorithmRef
-
-	# Cancel or uncancel the referenced algorithm based on the passed boolean value
-	setAlgorithmCancelled(algorithmRefId: ID!, bool: Boolean): AlgorithmRef
-
-	# Pause or unpause the referenced algorithm based on the passed boolean value
-	setAlgorithmPaused(algorithmRefId: ID!, bool: Boolean): AlgorithmRef
+	createAlgorithm(algorithmId: ID!, dataIds: [ID!], parameters: [PropertyInput!]): AlgorithmInstance!
 
 	
-	# Converts the referenced data into the desired output format
-	convertData(dataRefId: ID!, outFormat: String!): DataRef
+	# Uploads a data file and creates the data reference in the data manager
+	uploadData(file: File!, properties: DataProperties): Data!
 
 	# Removes the referenced data from the data manager
-	removeData(dataRefId: ID): Boolean
+	removeData(dataId: ID): Boolean!
 
 	# Sets label to the referenced data
-	setLabel(dataRefId: ID, label: String): Boolean
-
-	# Selects the referenced data objects in the data manager
-	setSelectedData(dataRefIds: [ID!]): Void
+	updateData(dataId: ID, properties: DataProperties): Boolean!
 
 	
-	# Sends the response created by user for the specified notification as a list of key:value mappings
-	setNotificationResponse(notificationId: ID, response: [PropertyInput!]): Void
+	# Sends the response from the user for the specified notification
+	setNotificationResponse(notificationId: ID!, response: NotificationResponse!): Boolean!
 
 	# Closes the referenced notification
 	closeNotification(notificationId: ID): Boolean
 
 	
-	# Clears all currently scheduled Algorithms to be run. 	If an Algorithm is already running, then it will continue to run until finished
-	clearScheduler: Void
+	# Cancel or uncancel the referenced algorithm based on the passed boolean value. 	Returns the algorithm's new cancelled state.
+	setAlgorithmCancelled(algorithmInstanceId: ID!, isCancelled: Boolean): Boolean!
 
-	# Schedule the referenced algorithm at given time in the scheduler
-	scheduleAlgorithm(algorithmRefId: ID!, time: Time!): Void
+	# Pause or unpause the referenced algorithm based on the passed boolean value. 	Returns the algorithm's new pause state.
+	setAlgorithmPaused(algorithmInstanceId: ID!, isPaused: Boolean): Boolean!
+
+	# Removes the given algorithm instance from the system. 	Returns if the algorithm was successfully removed.
+	removeAlgorithm(algorithmInstanceId: ID!): Boolean!
+
+	# Schedules an Algorithm to be run immediately. If there are simply not enough resources to run it, 	it will still have to wait until there are enough resources to fulfill the request. 	Returns if the algorithm was successfully started.
+	runAlgorithmNow(algorithmInstanceId: ID!): Boolean!
+
+	# Schedule the referenced algorithm at a given time in the scheduler. 	Returns if the algorithm was successfully scheduled.
+	scheduleAlgorithm(algorithmInstanceId: ID!, time: Time!): Boolean!
 
 	# Reschedules an already scheduled Algorithm to be run at a different time. 	If the Algorithm is not scheduled already, then this method will have no effect and will return false.
-	rescheduleAlgorithm(algorithmRefId: ID!, time: Time!): Boolean
+	rescheduleAlgorithm(algorithmInstanceId: ID!, time: Time!): Boolean!
 
-	# Schedules an Algorithm to be run immediately. If there are simply not enough resources to run it, 	it will still have to wait until there are enough resources to fulfill the request.
-	runAlgorithmNow(algorithmRefId: ID!): Void
+	# Unschedules an already scheduled, but not yet running Algorithm from the scheduler. 	Tries to unschedule an Algorithm from the scheduler.  	Returns if the algorithm was successfully started.
+	unscheduleAlgorithm(algorithmInstanceId: ID!): Boolean!
+
+	# Clears all currently scheduled Algorithms to be run. 	If an Algorithm is already running, then it will continue to run until finished. 	Returns the number of algorithms running after clearing the scheduler.
+	clearScheduler: Int!
 
 	# Pauses or unpauses the running of new Algorithms in the scheduler
-	# Parameters: running - true to pause, false to unpause
-	setSchedulerRunning(running: Boolean): Void
-
-	# Unschedules an already scheduled, but not running Algorithm from the scheduler. 	Tries to unschedule an Algorithm from the scheduler.
-	unscheduleAlgorithm(algorithmRefId: ID!): Void
+	# Parameters: running - true to pause, false to unpause. 	Returns the new schedule state.
+	setSchedulerRunning(running: Boolean): Boolean!
 
 }
 
 # Root subscription type
 type Subscription{	
 	# Receives the algorithm template when it is added
-	algorithmDefinitionAdded: AlgorithmDefinition
+	algorithmDefinitionAdded: AlgorithmDefinition!
 
 	# Receives the algorithm template when it is removed
-	algorithmDefinitionRemoved: AlgorithmDefinition
+	algorithmDefinitionRemoved: AlgorithmDefinition!
 
-	# Receives the reference to an algorithm instance matching the filter criteria when it is updated
-	algorithmRefUpdated(filter: AlgorithmFilter): AlgorithmRef
+	# Receives the algorithm instance when it is updated and is optionally matched by the filter
+	algorithmInstanceUpdated(filter: AlgorithmFilter): AlgorithmInstance!
 
 	
 	# Receives a new notification when its created
-	newNotification: Notification
+	notificationAdded: Notification!
+
+	# Received a notification when it has been updated
+	notificationUpdated: Notification!
 
 	
-	# Receives the reference to a data object matching the filter criteria when it is updated
-	dataUpdated(filter: DataFilter): DataRef
+	# Receives the reference to a data object when it is added to the data manager
+	dataAdded: Data!
 
-	# Receives the reference to a data object matching the filter criteria when it is added to the data manager
-	dataAdded(filter: DataFilter): DataRef
+	# Receives the reference to a data object when it is removed from the data manager
+	dataRemoved: Data!
 
-	# Receives the reference to a data object matching the filter criteria when its label is changed
-	dataLabelChanged(filter: DataFilter): DataRef
-
-	# Receives the reference to a data object matching the filter criteria when it is removed from the data manager
-	dataRemoved(filter: DataFilter): DataRef
-
-	# Receives the references to data objects which have been selected in the data manager
-	dataSelected: [DataRef!]
+	# Receives the reference to a data object when it is updated
+	dataUpdated: Data!
 
 	
-	# Receives the reference to an algorithm instance matching the filter criteria when it encounters an error
-	algorithmError(filter: AlgorithmFilter): AlgorithmRef
+	# Receives update when scheduler is cleared. Return value is always false.
+	schedulerCleared: Boolean!
 
-	# Receives the reference to an algorithm instance matching the filter criteria when it starts executing
-	algorithmStarted(filter: AlgorithmFilter): AlgorithmRef
-	
-	# Receives the reference to an algorithm instance matching the filter criteria when it finishes executing
-	algorithmFinished(filter: AlgorithmFilter): AlgorithmRef
-	
-	# Receives the reference to an algorithm instance matching the filter criteria when it is scheduled
-	algorithmScheduled(filter: AlgorithmFilter): AlgorithmRef
-	
-	# Receives the reference to an algorithm instance matching the filter criteria when it is rescheduled
-	algorithmRescheduled(filter: AlgorithmFilter): AlgorithmRef
-	
-	# Receives the reference to an algorithm instance matching the filter criteria when it is unscheduled
-	algorithmUnscheduled(filter: AlgorithmFilter): AlgorithmRef
-	
-	# Receives update when scheduler is cleared
-	schedulerCleared: Void
-	
 	# Receives the current scheduler state when it changes
-	schedulerRunStateChanged: Boolean
+	schedulerRunningChanged: Boolean!
 
 	
-	# Receives new log matching the criteria of the filter
-	newLog(filter: LogFilter): Log
-
+	# Receives new logs matching the log levels specified (or all logs)
+	logAdded(logLevels: [LogLevel!]): Log!
 
 }
 
@@ -218,18 +181,24 @@ type PageInfo {
 	hasPreviousPage: Boolean!
 }
 
+# type used for pageable query results
+type QueryResults {
+	# Pagination information
+	pageInfo: PageInfo!
+}
+
 # Reference to an algorithm instance
-type AlgorithmRef {
+type AlgorithmInstance {
 	# Reference ID for the algorithm instance
 	id: ID!
 
-	# Data reference for the input data
-	inData: [DataRef!]
+	# The input data given to the algorithm
+	inData: [Data!]
 
-	# Additional parameters
-	options: [Property!]
+	# Additional parameters given to the algorithm by the user
+	parameters: [Property!]
 
-	# The algorithm factory template used to create the instance
+	# The algorithm definition used to create the instance
 	algorithmDefinition: AlgorithmDefinition!
 
 	# Current state of the algorithm instance
@@ -241,13 +210,13 @@ type AlgorithmRef {
 	# Current progress of the algorithm instance in work units
 	progress: Int
 
-	# Data reference for the output data
-	outData: [DataRef!]
+	# Data outputted after algorithm execution
+	outData: [Data!]
 }
 
-# Algorithm factory template for creating algorithm instances
+# Algorithm definition for creating algorithm instances
 type AlgorithmDefinition {
-	# service pid that uniquely identifies the algorithm template
+	# ID that uniquely identifies the algorithm definition
 	id: ID!
 
 	# Input parameters required by the algorithm
@@ -259,20 +228,20 @@ type AlgorithmDefinition {
 	# Formats and number of data the algorithm produces
 	outData: [String!]
 
-	# If this metadata element is used, it defines how the output Data produced by the algorithm 	should be arranged. Data items can be given a parent as part of their metadata (which usually 	means the Data was derived from the referenced Data). If parentage is set to “default” then each 	of the algorithm’s output Data items will have their parent Data item set as the first input Data 	item (if applicable) by the CIShell-conforming application. If parentage is set to something else or 	is not set at all, then it is up to the algorithm to set up these relationships.
-	parentage: String
-
-	# Type of the algorithm. If no type is set, then it is assumed to be of 'Standard Algorithm' type
-	type: AlgorithmType
-
-	# Specifies if the algorithm can be run remotely. Valid values are true or false. 	If this element is not set, then it is assumed that it cannot be run remotely.
-	remotable: Boolean
-
 	# A human-readable short name for the algorithm
 	label: String
 
-	# Provides more details on workings of the algorithm
+	# A description which provides more details on workings of the algorithm
 	description: String
+
+	# If the output Data produced by an instance of this algorithm should be a child 	of the first input Data item (if applicable). If this is set to false or is 	not set at all, then it is up to the algorithm to set up these relationships.
+	parentOutputData: Boolean
+
+	# Type of the algorithm. If no type is set, then it is assumed to be of type AlgorithmType.STANDARD
+	type: AlgorithmType
+
+	# Specifies if the algorithm can be run remotely. 	If this property is not set, then it is assumed that it cannot be run remotely.
+	remoteable: Boolean
 
 	# Specifies where on the menu an algorithm is to be placed if a menu bar is used. 	Otherwise, it can act as a primitive hierarchical classification of the algorithm.
 	menuPath: String
@@ -307,11 +276,11 @@ type AlgorithmDefinition {
 
 # Specifies parameter inputs required for the algorithm
 type InputParameters {
-	# Identifier for the object
+	# Identifier for the input parameters object
 	id: ID
 
 	# Title to be displayed if presented to the user
-	name: String
+	title: String
 
 	# Description
 	description: String
@@ -320,31 +289,46 @@ type InputParameters {
 	parameters: [ParameterDefinition!]
 }
 
-# Paginated Algorithm Definition Query Results
-type AlgorithmDefinitionQueryResults {
+# Algorithm Definition Results
+type AlgorithmDefinitionResults  {
 	# A list of matching algorithm definitions
 	results: [AlgorithmDefinition!]!
-
-	# Pagination information
-	pageInfo: PageInfo!
 }
+
+# AlgorithmInstance Results
+type AlgorithmInstanceResults  {
+	# A list of matching algorithm references
+	results: [AlgorithmInstance!]!
+}
+
+# Paginated Algorithm Definition Query Results
+union AlgorithmDefinitionQueryResults = AlgorithmDefinitionResults | QueryResults
+
+# Paginated AlgorithmInstance Query Results
+union AlgorithmInstanceQueryResults = AlgorithmInstanceResults | QueryResults
 
 # Input type for filtering algorithms based on
 input AlgorithmFilter {
-	# Identifier for the algorithm filter object
-	id: ID
+	# list of algorithm definition IDs to match on
+	algorithmDefinitionIds: [ID!]
 
-	# Current state of the algorithm
-	state: AlgorithmState
+	# list of AlgorithmInstance IDs to match on
+	algorithmInstanceIds: [ID!]
 
-	# Reference ids to the input data
-	inputDataRefIds: [ID!]
+	# list of algorithm states to match on
+	states: [AlgorithmState!]
 
-	# list of formats of the input data
-	inputFormat: [String!]
+	# List of reference ids to the input data to match on
+	inputDataIds: [ID!]
 
-	# list of formats of the output data
-	outputFormat: [String!]
+	# list of formats of the input data to match on
+	inputFormats: [String!]
+
+	# list of formats of the output data to match on
+	outputFormats: [String!]
+
+	# A list of key/value pairs to match on in the algorithm metadata
+	properties: [PropertyInput]
 
 	# Maximum number of items to fetch while filtering
 	limit: Int
@@ -378,19 +362,22 @@ enum AlgorithmState {
 }
 
 # The specific types of algorithm
-enum AlgorithmType{
-	# Custom type of CIShell algorithm for converting data of one type to another
+enum AlgorithmType {
+	# A type of algorithm for converting data of one type to another
 	CONVERTER
 
-	# Custom type of CIShell algorithm for providing pre-generated data for use in the CIShell platform
+	# A type of algorithm for providing pre-generated data for use in the CIShell platform
 	DATASET
 
-	# Custom type of CIShell algorithm which checks either an incoming or outgoing file to be sure it is of the type specified
+	# The default type of algorithm
+	STANDARD
+
+	# A type of algorithm which checks either an incoming or outgoing file to be sure it is of the type specified
 	VALIDATOR
 }
 
 # For the converter algorithms, it specifies if any data is lost in the conversion
-enum ConversionType{
+enum ConversionType {
 	# Specifies the type of data conversion where no data is lost
 	LOSSLESS
 
@@ -398,40 +385,85 @@ enum ConversionType{
 	LOSSY
 }
 
-# Reference type for the data created in CIShell
-type DataRef {
+# Reference to data stored on the server
+type Data {
 	# Reference ID to the data
 	id: ID!
 
 	# format of the data
 	format: String!
 
+	# A short label to give the Data object for shorter displays. It is recommended to keep the string length below 20 characters
+	name: String
+
 	# The label to give the data object if displayed
 	label: String
 
-	# A short label to give the Data object for shorter displays. It is recommended to keep the string length below 20 characters
-	shortLabel: String
-
 	# The parent data object of the data object. 	This is used when a data object is derived from another data object to show the hierarchical relationship between them. 	This property can be null, signifying that the data object was not derived from any other data object, 	such as when loading a new data object from a file.
-	parent: String
+	parentDataId: ID
 
 	# Specifies the general type of the data
 	type: DataType
 
 	# Flag to determine if the Data object has been modified and not saved since the modification. 	This is used to do things like notify the user before they exit that a modified Data object exists and ask if they want to save it.
-	modified: String
+	isModified: Boolean
 
 	# Other metadata information related to the data
-	otherProperties: [Property!]
+	properties: [Property!]
 }
 
-# Input type to filter the matching data objects
-input DataFilter {
-	# Identifier for the data filter object
-	id: ID
+# Data Results
+type DataResults  {
+	# A list of matching algorithm references
+	results: [Data!]!
+}
 
-	# To filter the data objects based on the given format
+# Paginated Algorithm Definition Query Results
+union DataQueryResults = DataResults | QueryResults
+
+# Input type to filter data objects
+input DataFilter {
+	# list of data IDs to match on
+	dataIds: [ID!]
+
+	# Filter the data objects based on the given formats
+	formats: [String!]
+
+	# Filter the data by modified state
+	isModified: Boolean
+
+	# Filter the data by data types
+	types: [DataType!]
+
+	# A list of key/value pairs to match on in the algorithm metadata
+	properties: [PropertyInput]
+}
+
+# Input type for uploading new data or updating existing ones
+input DataProperties {
+	# format of the data
 	format: String
+
+	# A short label to give the Data object for shorter displays. It is recommended to keep the string length below 20 characters
+	name: String
+
+	# The label to give the data object if displayed
+	label: String
+
+	# The parent data object of the data object. 	This is used when a data object is derived from another data object to show the hierarchical relationship between them. 	This property can be null, signifying that the data object was not derived from any other data object, 	such as when loading a new data object from a file.
+	parent: String
+
+	# Specifies the generic type of the data
+	type: DataType
+
+	# Other metadata information related to the data
+	properties: [PropertyInput!]
+
+	# Maximum number of items to fetch while filtering
+	limit: Int
+
+	# Number of items to skip while matching
+	offset: Int
 }
 
 # Enum type to specify the general type of data objects
@@ -491,26 +523,63 @@ type Notification {
 	# Detailed description for the notification
 	detail: String
 
+	# A stack trace of the error to be shown, where applicable
+	stackTrace: [String!]
+
 	# List of parameters which includes the type, name, description and options for dropdown boxes
-	parameters: [ParameterDefinition]
+	formParameters: [ParameterDefinition]
 
 	# Says if the notification is closed
 	isClosed: Boolean
 
-	# Response from the user as a list of key:value mappings
-	response: [Property!]
+	# If the notification type is FORM, response from the user as a list of key:value mappings
+	formResponse: [Property!]
+
+	# If the notification type is QUESTION, whether the user pressed Yes or No
+	questionResponse: Boolean
+
+	# If the notification type is CONFIRM, whether the user pressed Ok or Cancel
+	confirmationResponse: Boolean
 }
+
+# Notification Results
+type NotificationResults  {
+	# A list of matching notification references
+	results: [Notification!]!
+}
+
+# Paginated Algorithm Definition Query Results
+union NotificationQueryResults = NotificationResults | QueryResults
 
 # Input filter to match notifications
 input NotificationFilter {
-	# Identifier for the notification filter object
-	id: ID
+	# list of notification IDs to match on
+	ids: [ID!]
+
+	# Filter the data by isClosed state
+	isClosed: Boolean
 
 	# Maximum number of notifications that will be matched against the filter
 	limit: Int
 
 	# Number of items to skip while matching
 	offset: Int
+}
+
+# Input to send the user response to a notification
+input NotificationResponse {
+
+	# If the notification type is FORM, response from the user as a list of key:value mappings
+	formResponse: [PropertyInput!]
+
+	# If the notification type is QUESTION, whether the user pressed Yes (true) or No (false)
+	questionResponse: Boolean
+
+	# If the notification type is CONFIRM, whether the user pressed Ok (true) or Cancel (false)
+	confirmationResponse: Boolean
+
+	# If the notification should be closed as part of the response
+	closeNotification: Boolean
 }
 
 # Specifies the general type of notifications
@@ -532,7 +601,6 @@ enum NotificationType {
 
 	# Type of notifications to warn user of a situation which requires user's attention
 	WARNING
-
 }
 
 # Object type for logging
@@ -543,20 +611,32 @@ type Log {
 	# Log message
 	message: String
 
-	# List of string specifying the complete trace of events
+	# An optional list of strings for logging errors
 	stackTrace: [String!]
 
-	# Associated timestamp
+	# Time that the log was triggered
 	timestamp: Time
 }
+
+# Log Results
+type LogResults  {
+	# A list of matching log references
+	results: [Log!]!
+}
+
+# Paginated Algorithm Definition Query Results
+union LogQueryResults = LogResults | QueryResults
 
 # Filter input type to match logs with certain criteria
 input LogFilter {
 	# Matches all the logs specified in the log level list
 	logLevel: [LogLevel!]
 
-	# Matches all the logs logged since certain timestamp
+	# Matches all the logs logged since a certain timestamp
 	logsSince: Time
+
+	# Matches all the logs logged before a certain timestamp
+	logsBefoe: Time
 
 	# Maximum number of log objects to be fetched per query
 	limit: Int
@@ -593,16 +673,16 @@ type Property {
 type ParameterDefinition {
 	# Identifier for the attribute
 	id: String!
-	
+
 	# Name for the attribute
 	name: String!
-	
+
 	# Description
 	description: String!
 
 	# Type of the attribute
 	type: AttributeType!
-	
+
 	# Options for the dropdown boxes
 	options: [Property!]
 }
@@ -636,7 +716,7 @@ enum AttributeType {
 	# A 4-Byte signed two's complement integer
 	INTEGER
 
-	# A 8-byte signed two's complement integer 
+	# A 8-byte signed two's complement integer
 	LONG
 
 	# A 2-Byte signed two's complement integer

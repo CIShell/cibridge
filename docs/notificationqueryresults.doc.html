@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="./styles/graphdoc.css" />
-    <title>AlgorithmType</title>
+    <title>NotificationQueryResults</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet"><link type="text/css" rel="stylesheet" href="./assets/code.css" /><link type="text/css" rel="stylesheet" href="./assets/require-by.css" />
 </head>
 <body class="slds-scrollable--y">
@@ -90,7 +90,7 @@
                 AlgorithmState
             </a>
         </li>
-        <li class="slds-is-active" title="AlgorithmType">
+        <li  title="AlgorithmType">
             <a href="algorithmtype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 AlgorithmType
             </a>
@@ -155,7 +155,7 @@
                 LogQueryResults
             </a>
         </li>
-        <li  title="NotificationQueryResults">
+        <li class="slds-is-active" title="NotificationQueryResults">
             <a href="notificationqueryresults.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 NotificationQueryResults
             </a>
@@ -345,9 +345,9 @@
         </div>
     </div>
     <div class="container">
-        <p class="slds-text-title--caps slds-text-color--weak">ENUM</p>
-        <h1 class="slds-text-heading--large">AlgorithmType</h1>
-        <div class="slds-text-body--regular"><p>The specific types of algorithm</p>
+        <p class="slds-text-title--caps slds-text-color--weak">UNION</p>
+        <h1 class="slds-text-heading--large">NotificationQueryResults</h1>
+        <div class="slds-text-body--regular"><p>Paginated Algorithm Definition Query Results</p>
 </div>
     </div>
 </section>
@@ -359,7 +359,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">enum</span> <span class="identifier">AlgorithmType</span> {</li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm for converting data of one type to another</span></span></li><li><span class="tab"><span class="meta">CONVERTER</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm for providing pre-generated data for use in the CIShell </span></span></li><li><span class="tab"><span class="comment line">#   platform</span></span></li><li><span class="tab"><span class="meta">DATASET</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   The default type of algorithm</span></span></li><li><span class="tab"><span class="meta">STANDARD</span></span></li><li><span class="tab"></span></li><li><span class="tab"><span class="comment line">#   A type of algorithm which checks either an incoming or outgoing file to be sure </span></span></li><li><span class="tab"><span class="comment line">#   it is of the type specified</span></span></li><li><span class="tab"><span class="meta">VALIDATOR</span></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">union</span> <span class="identifier">NotificationQueryResults</span> = <a class="support type" href="notificationresults.doc.html">NotificationResults</a> | <a class="support type" href="queryresults.doc.html">QueryResults</a></li></ul></code>
     </div>
 </section>
 <section>
@@ -370,7 +370,7 @@
             </a>
             Require by
         </h2>
-        <ul class="require-by"><li><a href="algorithmdefinition.doc.html" title="AlgorithmDefinition - Algorithm definition for creating algorithm instances">AlgorithmDefinition<em>Algorithm definition for creating algorithm instances</em></a><li></ul>
+        <ul class="require-by"><li><a href="query.doc.html" title="Query - Root query type">Query<em>Root query type</em></a><li></ul>
     </div>
 </section>
 <footer>

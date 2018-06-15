@@ -1,7 +1,7 @@
 const rootSchema = require('./root-schema');
 const algorithm = require('./algorithm');
 const data = require('./data');
-const guiBuilder = require('./gui-builder');
+const notification = require('./notification');
 const logger = require('./logger');
 const util = require('./util');
 
@@ -18,9 +18,9 @@ ${algorithm.enums}
 ${data.types}
 ${data.inputTypes}
 ${data.enums}
-${guiBuilder.types}
-${guiBuilder.inputTypes}
-${guiBuilder.enums}
+${notification.types}
+${notification.inputTypes}
+${notification.enums}
 ${logger.types}
 ${logger.inputTypes}
 ${logger.enums}

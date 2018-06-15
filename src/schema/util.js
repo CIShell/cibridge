@@ -12,16 +12,16 @@ type Property {
 type ParameterDefinition {
 	# Identifier for the attribute
 	id: String!
-	
+
 	# Name for the attribute
 	name: String!
-	
+
 	# Description
 	description: String!
 
 	# Type of the attribute
 	type: AttributeType!
-	
+
 	# Options for the dropdown boxes
 	options: [Property!]
 }
@@ -57,7 +57,7 @@ enum AttributeType {
 	# A 4-Byte signed two's complement integer
 	INTEGER
 
-	# A 8-byte signed two's complement integer 
+	# A 8-byte signed two's complement integer
 	LONG
 
 	# A 2-Byte signed two's complement integer
@@ -67,4 +67,5 @@ enum AttributeType {
 	STRING
 }
 `
+
 module.exports = { types, inputTypes, enums };

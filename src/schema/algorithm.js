@@ -1,16 +1,16 @@
 const types = `\
 # Reference to an algorithm instance
-type AlgorithmRef {
+type AlgorithmInstance {
 	# Reference ID for the algorithm instance
 	id: ID!
 
-	# Data reference for the input data
-	inData: [DataRef!]
+	# The input data given to the algorithm
+	inData: [Data!]
 
-	# Additional parameters
-	options: [Property!]
+	# Additional parameters given to the algorithm by the user
+	parameters: [Property!]
 
-	# The algorithm factory template used to create the instance
+	# The algorithm definition used to create the instance
 	algorithmDefinition: AlgorithmDefinition!
 
 	# Current state of the algorithm instance
@@ -22,13 +22,13 @@ type AlgorithmRef {
 	# Current progress of the algorithm instance in work units
 	progress: Int
 
-	# Data reference for the output data
-	outData: [DataRef!]
+	# Data outputted after algorithm execution
+	outData: [Data!]
 }
 
-# Algorithm factory template for creating algorithm instances
+# Algorithm definition for creating algorithm instances
 type AlgorithmDefinition {
-	# service pid that uniquely identifies the algorithm template
+	# ID that uniquely identifies the algorithm definition
 	id: ID!
 
 	# Input parameters required by the algorithm
@@ -40,26 +40,23 @@ type AlgorithmDefinition {
 	# Formats and number of data the algorithm produces
 	outData: [String!]
 
-	# If this metadata element is used, it defines how the output Data produced by the algorithm \
-	should be arranged. Data items can be given a parent as part of their metadata (which usually \
-	means the Data was derived from the referenced Data). If parentage is set to “default” then each \
-	of the algorithm’s output Data items will have their parent Data item set as the first input Data \
-	item (if applicable) by the CIShell-conforming application. If parentage is set to something else or \
-	is not set at all, then it is up to the algorithm to set up these relationships.
-	parentage: String
-
-	# Type of the algorithm. If no type is set, then it is assumed to be of 'Standard Algorithm' type
-	type: AlgorithmType
-
-	# Specifies if the algorithm can be run remotely. Valid values are true or false. \
-	If this element is not set, then it is assumed that it cannot be run remotely.
-	remotable: Boolean
-
 	# A human-readable short name for the algorithm
 	label: String
 
-	# Provides more details on workings of the algorithm
+	# A description which provides more details on workings of the algorithm
 	description: String
+
+	# If the output Data produced by an instance of this algorithm should be a child \
+	of the first input Data item (if applicable). If this is set to false or is \
+	not set at all, then it is up to the algorithm to set up these relationships.
+	parentOutputData: Boolean
+
+	# Type of the algorithm. If no type is set, then it is assumed to be of type AlgorithmType.STANDARD
+	type: AlgorithmType
+
+	# Specifies if the algorithm can be run remotely. \
+	If this property is not set, then it is assumed that it cannot be run remotely.
+	remoteable: Boolean
 
 	# Specifies where on the menu an algorithm is to be placed if a menu bar is used. \
 	Otherwise, it can act as a primitive hierarchical classification of the algorithm.
@@ -95,11 +92,11 @@ type AlgorithmDefinition {
 
 # Specifies parameter inputs required for the algorithm
 type InputParameters {
-	# Identifier for the object
+	# Identifier for the input parameters object
 	id: ID
 
 	# Title to be displayed if presented to the user
-	name: String
+	title: String
 
 	# Description
 	description: String
@@ -108,33 +105,48 @@ type InputParameters {
 	parameters: [ParameterDefinition!]
 }
 
-# Paginated Algorithm Definition Query Results
-type AlgorithmDefinitionQueryResults {
+# Algorithm Definition Results
+type AlgorithmDefinitionResults  {
 	# A list of matching algorithm definitions
 	results: [AlgorithmDefinition!]!
-
-	# Pagination information
-	pageInfo: PageInfo!
 }
+
+# AlgorithmInstance Results
+type AlgorithmInstanceResults  {
+	# A list of matching algorithm references
+	results: [AlgorithmInstance!]!
+}
+
+# Paginated Algorithm Definition Query Results
+union AlgorithmDefinitionQueryResults = AlgorithmDefinitionResults | QueryResults
+
+# Paginated AlgorithmInstance Query Results
+union AlgorithmInstanceQueryResults = AlgorithmInstanceResults | QueryResults
 `
 
 const inputTypes = `\
 # Input type for filtering algorithms based on
 input AlgorithmFilter {
-	# Identifier for the algorithm filter object
-	id: ID
+	# list of algorithm definition IDs to match on
+	algorithmDefinitionIds: [ID!]
 
-	# Current state of the algorithm
-	state: AlgorithmState
+	# list of AlgorithmInstance IDs to match on
+	algorithmInstanceIds: [ID!]
 
-	# Reference ids to the input data
-	inputDataRefIds: [ID!]
+	# list of algorithm states to match on
+	states: [AlgorithmState!]
 
-	# list of formats of the input data
-	inputFormat: [String!]
+	# List of reference ids to the input data to match on
+	inputDataIds: [ID!]
 
-	# list of formats of the output data
-	outputFormat: [String!]
+	# list of formats of the input data to match on
+	inputFormats: [String!]
+
+	# list of formats of the output data to match on
+	outputFormats: [String!]
+
+	# A list of key/value pairs to match on in the algorithm metadata
+	properties: [PropertyInput]
 
 	# Maximum number of items to fetch while filtering
 	limit: Int
@@ -170,19 +182,22 @@ enum AlgorithmState {
 }
 
 # The specific types of algorithm
-enum AlgorithmType{
-	# Custom type of CIShell algorithm for converting data of one type to another
+enum AlgorithmType {
+	# A type of algorithm for converting data of one type to another
 	CONVERTER
 
-	# Custom type of CIShell algorithm for providing pre-generated data for use in the CIShell platform
+	# A type of algorithm for providing pre-generated data for use in the CIShell platform
 	DATASET
 
-	# Custom type of CIShell algorithm which checks either an incoming or outgoing file to be sure it is of the type specified
+	# The default type of algorithm
+	STANDARD
+
+	# A type of algorithm which checks either an incoming or outgoing file to be sure it is of the type specified
 	VALIDATOR
 }
 
 # For the converter algorithms, it specifies if any data is lost in the conversion
-enum ConversionType{
+enum ConversionType {
 	# Specifies the type of data conversion where no data is lost
 	LOSSLESS
 

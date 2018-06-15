@@ -1,6 +1,6 @@
 const framework = require('./framework');
 const dataConversion = require('./data-conversion');
-const guiBuilder = require('./gui-builder');
+const notification = require('./notification');
 const dataManager = require('./data-manager');
 const scheduler = require('./scheduler');
 const logger = require('./logger');
@@ -20,9 +20,6 @@ scalar Time
 
 # data type to store file information
 scalar File
-
-# data type equivalent to null value
-scalar Void
 `
 
 const schema = `\
@@ -43,8 +40,8 @@ const queries = `\
 type Query{\
 	${framework.queries}
 	${dataConversion.queries}
-	${guiBuilder.queries}
 	${dataManager.queries}
+	${notification.queries}
 	${scheduler.queries}
 	${logger.queries}
 	${preferences.queries}
@@ -55,8 +52,8 @@ const mutations = `\
 # Root mutation type
 type Mutation{\
 	${framework.mutations}
-	${dataConversion.mutations}
-	${guiBuilder.mutations}
+	${dataManager.mutations}
+	${notification.mutations}
 	${scheduler.mutations}
 }
 `
@@ -64,7 +61,7 @@ const subscriptions = `\
 # Root subscription type
 type Subscription{\
 	${framework.subscriptions}
-	${guiBuilder.subscriptions}
+	${notification.subscriptions}
 	${dataManager.subscriptions}
 	${scheduler.subscriptions}
 	${logger.subscriptions}
@@ -79,6 +76,12 @@ type PageInfo {
 
 	# If there is a previous page of data
 	hasPreviousPage: Boolean!
+}
+
+# type used for pageable query results
+type QueryResults {
+	# Pagination information
+	pageInfo: PageInfo!
 }
 `
 
