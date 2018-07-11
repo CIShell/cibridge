@@ -15,12 +15,12 @@ scalar ID
 # data type to store values (of any data type specified by the user)
 scalar Value
 
-# data type to store datetime information
-scalar Time
+# data type to store datedate information
+scalar Date
 
 # data type to store file information
 scalar File
-`
+`;
 
 const schema = `\
 # GraphQL root schema
@@ -34,7 +34,8 @@ schema {
 	# root subscription type
 	subscription: Subscription
 }
-`
+`;
+
 const queries = `\
 # Root query type
 type Query{\
@@ -46,7 +47,7 @@ type Query{\
 	${logger.queries}
 	${preferences.queries}
 }
-`
+`;
 
 const mutations = `\
 # Root mutation type
@@ -56,7 +57,8 @@ type Mutation{\
 	${notification.mutations}
 	${scheduler.mutations}
 }
-`
+`;
+
 const subscriptions = `\
 # Root subscription type
 type Subscription{\
@@ -66,7 +68,7 @@ type Subscription{\
 	${scheduler.subscriptions}
 	${logger.subscriptions}
 }
-`
+`;
 
 const pageInfo = `\
 # type to store info related to pagination. \
@@ -84,6 +86,6 @@ interface QueryResults {
 	# Pagination information
 	pageInfo: PageInfo!
 }
-`
+`;
 
-module.exports = {scalars, schema, queries, mutations, subscriptions, pageInfo}
+module.exports = {scalars, schema, queries, mutations, subscriptions, pageInfo};

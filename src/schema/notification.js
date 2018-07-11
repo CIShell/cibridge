@@ -44,7 +44,8 @@ type NotificationQueryResults implements QueryResults  {
 	# Pagination information
 	pageInfo: PageInfo!
 }
-`
+`;
+
 const inputTypes = `\
 # Input filter to match notifications
 input NotificationFilter {
@@ -76,7 +77,8 @@ input NotificationResponse {
 	# If the notification should be closed as part of the response
 	closeNotification: Boolean
 }
-`
+`;
+
 const enums = `\
 # Specifies the general type of notifications
 enum NotificationType {
@@ -98,7 +100,7 @@ enum NotificationType {
 	# Type of notifications to warn user of a situation which requires user's attention
 	WARNING
 }
-`
+`;
 
 const queries = `
 	# Returns the notifications matching the specified criteria given in the filter object
@@ -106,7 +108,7 @@ const queries = `
 
 	# Returns if the specified notification is closed or not
 	isClosed(notificationId: ID!): Boolean!
-`
+`;
 
 const mutations = `
 	# Sends the response from the user for the specified notification
@@ -114,7 +116,7 @@ const mutations = `
 
 	# Closes the referenced notification
 	closeNotification(notificationId: ID): Boolean
-`
+`;
 
 const subscriptions = `
 	# Receives a new notification when its created
@@ -122,6 +124,6 @@ const subscriptions = `
 
 	# Received a notification when it has been updated
 	notificationUpdated: Notification!
-`
+`;
 
 module.exports = { types, inputTypes, enums, queries, mutations, subscriptions };

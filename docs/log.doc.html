@@ -50,6 +50,11 @@
                 Boolean
             </a>
         </li>
+        <li  title="Date">
+            <a href="date.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Date
+            </a>
+        </li>
         <li  title="File">
             <a href="file.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 File
@@ -68,11 +73,6 @@
         <li  title="String">
             <a href="string.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 String
-            </a>
-        </li>
-        <li  title="Time">
-            <a href="time.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Time
             </a>
         </li>
         <li  title="Value">
@@ -334,7 +334,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Log</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Level at which the logs will be logged</span></span></li><li><span class="tab"><span class="meta">logLevel</span>: <a class="support type" href="loglevel.doc.html">LogLevel</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Log message</span></span></li><li><span class="tab"><span class="meta">message</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   An optional list of strings for logging errors</span></span></li><li><span class="tab"><span class="meta">stackTrace</span>: [<a class="support type" href="string.doc.html">String</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   Time that the log was triggered</span></span></li><li><span class="tab"><span class="meta">timestamp</span>: <a class="support type" href="time.doc.html">Time</a> </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">Log</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Level at which the logs will be logged</span></span></li><li><span class="tab"><span class="meta">logLevel</span>: <a class="support type" href="loglevel.doc.html">LogLevel</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Log message</span></span></li><li><span class="tab"><span class="meta">message</span>: <a class="support type" href="string.doc.html">String</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   An optional list of strings for logging errors</span></span></li><li><span class="tab"><span class="meta">stackTrace</span>: [<a class="support type" href="string.doc.html">String</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   Timestamp when the log was triggered</span></span></li><li><span class="tab"><span class="meta">timestamp</span>: <a class="support type" href="date.doc.html">Date</a> </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>

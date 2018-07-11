@@ -10,8 +10,8 @@ type Log {
 	# An optional list of strings for logging errors
 	stackTrace: [String!]
 
-	# Time that the log was triggered
-	timestamp: Time
+	# Timestamp when the log was triggered
+	timestamp: Date
 }
 
 # Paginated Log Query Results
@@ -22,7 +22,7 @@ type LogQueryResults implements QueryResults  {
 	# Pagination information
 	pageInfo: PageInfo!
 }
-`
+`;
 
 const inputTypes = `\
 # Filter input type to match logs with certain criteria
@@ -31,10 +31,10 @@ input LogFilter {
 	logLevel: [LogLevel!]
 
 	# Matches all the logs logged since a certain timestamp
-	logsSince: Time
+	logsSince: Date
 
 	# Matches all the logs logged before a certain timestamp
-	logsBefoe: Time
+	logsBefore: Date
 
 	# Maximum number of log objects to be fetched per query
 	limit: Int
@@ -42,7 +42,7 @@ input LogFilter {
 	# Number of items to skip while matching
 	offset: Int
 }
-`
+`;
 
 const enums = `\
 # Severity level for the logs
@@ -59,16 +59,16 @@ enum LogLevel {
 	# Indicates the algorithm will still be executed, but that outputs may not be what was expected.
 	WARNING
 }
-`
+`;
 
 const queries = `
 	# Returns all the logs that matches the given log filter
 	getLogs(filter: LogFilter): LogQueryResults!
-`
+`;
 
 const subscriptions = `
 	# Receives new logs matching the log levels specified (or all logs)
 	logAdded(logLevels: [LogLevel!]): Log!
-`
+`;
 
 module.exports = { types, inputTypes, enums, queries, subscriptions };

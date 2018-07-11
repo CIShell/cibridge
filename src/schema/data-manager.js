@@ -4,7 +4,7 @@ const queries = `
 
 	# Downloads the data associated with the given data reference as a file
 	downloadData(dataId: ID!): File!
-`
+`;
 
 const mutations = `
 	# Uploads a data file and creates the data reference in the data manager
@@ -15,7 +15,7 @@ const mutations = `
 
 	# Sets label to the referenced data
 	updateData(dataId: ID, properties: DataProperties): Boolean!
-`
+`;
 
 const subscriptions = `
 	# Receives the reference to a data object when it is added to the data manager
@@ -26,5 +26,6 @@ const subscriptions = `
 
 	# Receives the reference to a data object when it is updated
 	dataUpdated: Data!
-`
+`;
+
 module.exports = { queries, mutations, subscriptions };

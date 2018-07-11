@@ -5,5 +5,6 @@ const queries = `
 	# getUserPreferences(algorithm: AlgorithmDefinition): Preferences
 	# getSystemPreferences(algorithm: AlgorithmDefinition): Preferences
 	# getSystemPreferences: Preferences
-`
+`;
+
 module.exports = { queries };

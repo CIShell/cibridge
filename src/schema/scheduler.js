@@ -7,7 +7,7 @@ const queries = `
 
 	# Returns the count of the algorithms waiting in the scheduler
 	getSchedulerQueueWaiting: Int
-`
+`;
 
 const mutations = `
 	# Cancel or uncancel the referenced algorithm based on the passed boolean value. \
@@ -27,13 +27,13 @@ const mutations = `
 	Returns if the algorithm was successfully started.
 	runAlgorithmNow(algorithmInstanceId: ID!): Boolean!
 
-	# Schedule the referenced algorithm at a given time in the scheduler. \
+	# Schedule the referenced algorithm at a given date in the scheduler. \
 	Returns if the algorithm was successfully scheduled.
-	scheduleAlgorithm(algorithmInstanceId: ID!, time: Time!): Boolean!
+	scheduleAlgorithm(algorithmInstanceId: ID!, date: Date!): Boolean!
 
-	# Reschedules an already scheduled Algorithm to be run at a different time. \
+	# Reschedules an already scheduled Algorithm to be run at a different date. \
 	If the Algorithm is not scheduled already, then this method will have no effect and will return false.
-	rescheduleAlgorithm(algorithmInstanceId: ID!, time: Time!): Boolean!
+	rescheduleAlgorithm(algorithmInstanceId: ID!, date: Date!): Boolean!
 
 	# Unschedules an already scheduled, but not yet running Algorithm from the scheduler. \
 	Tries to unschedule an Algorithm from the scheduler.  \
@@ -49,7 +49,7 @@ const mutations = `
 	# Parameters: running - true to pause, false to unpause. \
 	Returns the new schedule state.
 	setSchedulerRunning(running: Boolean): Boolean!
-`
+`;
 
 const subscriptions = `
 	# Receives update when scheduler is cleared. Return value is always false.
@@ -57,6 +57,6 @@ const subscriptions = `
 
 	# Receives the current scheduler state when it changes
 	schedulerRunningChanged: Boolean!
-`
+`;
 
 module.exports = { queries, mutations, subscriptions };

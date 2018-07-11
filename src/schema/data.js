@@ -38,7 +38,7 @@ type DataQueryResults implements QueryResults {
 	# Pagination information
 	pageInfo: PageInfo!
 }
-`
+`;
 
 const inputTypes = `\
 # Input type to filter data objects
@@ -88,7 +88,7 @@ input DataProperties {
 	# Number of items to skip while matching
 	offset: Int
 }
-`
+`;
 
 const enums = `\
 # Enum type to specify the general type of data objects
@@ -129,6 +129,6 @@ enum DataType {
 	# The data model is a PostScript file
 	VECTORIMAGE
 }
-`
+`;
 
 module.exports = { types, inputTypes, enums };

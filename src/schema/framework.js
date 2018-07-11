@@ -6,13 +6,13 @@ const queries = `
 	getAlgorithmInstances(filter: AlgorithmFilter): AlgorithmInstanceQueryResults!
 
 	# Validates the given data that is proposed to be given to the algorithm
-	validateData(algorithmId: ID!, dataIds: [ID]!): String
-`
+	validateData(algorithmDefinitionId: ID!, dataIds: [ID]!): String
+`;
 
 const mutations = `
 	# Create instance of the given algorithm template using the data references
-	createAlgorithm(algorithmId: ID!, dataIds: [ID!], parameters: [PropertyInput!]): AlgorithmInstance!
-`
+	createAlgorithm(algorithmDefinitionId: ID!, dataIds: [ID!], parameters: [PropertyInput!]): AlgorithmInstance!
+`;
 
 const subscriptions = `
 	# Receives the algorithm template when it is added
@@ -23,5 +23,6 @@ const subscriptions = `
 
 	# Receives the algorithm instance when it is updated and is optionally matched by the filter
 	algorithmInstanceUpdated(filter: AlgorithmFilter): AlgorithmInstance!
-`
+`;
+
 module.exports = { queries, mutations, subscriptions };

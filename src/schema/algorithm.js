@@ -16,10 +16,10 @@ type AlgorithmInstance {
 	# Current state of the algorithm instance
 	state: AlgorithmState
 
-	# Scheduled datetime for the algorithm instance
-	scheduledRunTime: Time
+	# Scheduled run time for the algorithm instance
+	scheduledRunTime: Date
 
-	# Current progress of the algorithm instance in work units
+	# Current progress of the algorithm instance, from 1 to 100
 	progress: Int
 
 	# Data outputted after algorithm execution
@@ -122,7 +122,7 @@ type AlgorithmInstanceQueryResults implements QueryResults  {
 	# Pagination information
 	pageInfo: PageInfo!
 }
-`
+`;
 
 const inputTypes = `\
 # Input type for filtering algorithms based on
@@ -154,7 +154,7 @@ input AlgorithmFilter {
 	# Number of items to skip while matching
 	offset: Int
 }
-`
+`;
 
 const enums = `\
 # Specifies the current state of the algorithm instance
@@ -205,6 +205,6 @@ enum ConversionType {
 	# Specifies the type of data conversion where some data can be lost
 	LOSSY
 }
-`
+`;
 
 module.exports = { types, inputTypes, enums };

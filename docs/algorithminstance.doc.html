@@ -50,6 +50,11 @@
                 Boolean
             </a>
         </li>
+        <li  title="Date">
+            <a href="date.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Date
+            </a>
+        </li>
         <li  title="File">
             <a href="file.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 File
@@ -68,11 +73,6 @@
         <li  title="String">
             <a href="string.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 String
-            </a>
-        </li>
-        <li  title="Time">
-            <a href="time.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Time
             </a>
         </li>
         <li  title="Value">
@@ -334,7 +334,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">AlgorithmInstance</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Reference ID for the algorithm instance</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   The input data given to the algorithm</span></span></li><li><span class="tab"><span class="meta">inData</span>: [<a class="support type" href="data.doc.html">Data</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   Additional parameters given to the algorithm by the user</span></span></li><li><span class="tab"><span class="meta">parameters</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   The algorithm definition used to create the instance</span></span></li><li><span class="tab"><span class="meta">algorithmDefinition</span>: <a class="support type" href="algorithmdefinition.doc.html">AlgorithmDefinition</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Current state of the algorithm instance</span></span></li><li><span class="tab"><span class="meta">state</span>: <a class="support type" href="algorithmstate.doc.html">AlgorithmState</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Scheduled datetime for the algorithm instance</span></span></li><li><span class="tab"><span class="meta">scheduledRunTime</span>: <a class="support type" href="time.doc.html">Time</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Current progress of the algorithm instance in work units</span></span></li><li><span class="tab"><span class="meta">progress</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Data outputted after algorithm execution</span></span></li><li><span class="tab"><span class="meta">outData</span>: [<a class="support type" href="data.doc.html">Data</a>!] </span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">type</span> <span class="identifier">AlgorithmInstance</span> {</li><li></li><li><span class="tab"><span class="comment line">#   Reference ID for the algorithm instance</span></span></li><li><span class="tab"><span class="meta">id</span>: <a class="support type" href="id.doc.html">ID</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   The input data given to the algorithm</span></span></li><li><span class="tab"><span class="meta">inData</span>: [<a class="support type" href="data.doc.html">Data</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   Additional parameters given to the algorithm by the user</span></span></li><li><span class="tab"><span class="meta">parameters</span>: [<a class="support type" href="property.doc.html">Property</a>!] </span></li><li></li><li><span class="tab"><span class="comment line">#   The algorithm definition used to create the instance</span></span></li><li><span class="tab"><span class="meta">algorithmDefinition</span>: <a class="support type" href="algorithmdefinition.doc.html">AlgorithmDefinition</a>! </span></li><li></li><li><span class="tab"><span class="comment line">#   Current state of the algorithm instance</span></span></li><li><span class="tab"><span class="meta">state</span>: <a class="support type" href="algorithmstate.doc.html">AlgorithmState</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Scheduled run time for the algorithm instance</span></span></li><li><span class="tab"><span class="meta">scheduledRunTime</span>: <a class="support type" href="date.doc.html">Date</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Current progress of the algorithm instance, from 1 to 100</span></span></li><li><span class="tab"><span class="meta">progress</span>: <a class="support type" href="int.doc.html">Int</a> </span></li><li></li><li><span class="tab"><span class="comment line">#   Data outputted after algorithm execution</span></span></li><li><span class="tab"><span class="meta">outData</span>: [<a class="support type" href="data.doc.html">Data</a>!] </span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>

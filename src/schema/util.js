@@ -25,7 +25,8 @@ type ParameterDefinition {
 	# Options for the dropdown boxes
 	options: [Property!]
 }
-`
+`;
+
 const inputTypes = `\
 # Generic Property input type to pass key:value mappings over queries and mutations
 input PropertyInput {
@@ -35,7 +36,8 @@ input PropertyInput {
 	# Value mapped to the key. The data type for the field is left for the user to decide
 	value: Value!
 }
-`
+`;
+
 const enums = `\
 # Specifies several primitive data types for ParameterDefinition
 enum AttributeType {
@@ -66,6 +68,6 @@ enum AttributeType {
 	# A sequence of characters
 	STRING
 }
-`
+`;
 
 module.exports = { types, inputTypes, enums };

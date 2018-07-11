@@ -5,11 +5,11 @@ const queries = `
 
 	# Find the chain of converter algorithms to convert data from given input format to given output format
 	findConvertersByFormat(inFormat: String!, outFormat: String!): [AlgorithmInstance!]!
-`
+`;
 
 const mutations = `
 	# Converts the referenced data into the desired output format
 	convertData(dataId: ID!, outFormat: String!): Data
-`
+`;
 
-module.exports = {queries, mutations}
+module.exports = {queries, mutations};

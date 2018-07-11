@@ -50,6 +50,11 @@
                 Boolean
             </a>
         </li>
+        <li  title="Date">
+            <a href="date.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
+                Date
+            </a>
+        </li>
         <li  title="File">
             <a href="file.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 File
@@ -68,11 +73,6 @@
         <li  title="String">
             <a href="string.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
                 String
-            </a>
-        </li>
-        <li  title="Time">
-            <a href="time.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Time
             </a>
         </li>
         <li  title="Value">
@@ -334,7 +334,7 @@
             </a>
             GraphQL Schema definition
         </h2>
-        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">input</span> <span class="identifier">LogFilter</span> {</li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Matches all the logs specified in the log level list</span></span></li><li><span class="tab"><span class="meta">logLevel</span>: [<a class="support type" href="loglevel.doc.html">LogLevel</a>!]</span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Matches all the logs logged since a certain timestamp</span></span></li><li><span class="tab"><span class="meta">logsSince</span>: <a class="support type" href="time.doc.html">Time</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Matches all the logs logged before a certain timestamp</span></span></li><li><span class="tab"><span class="meta">logsBefoe</span>: <a class="support type" href="time.doc.html">Time</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Maximum number of log objects to be fetched per query</span></span></li><li><span class="tab"><span class="meta">limit</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Number of items to skip while matching</span></span></li><li><span class="tab"><span class="meta">offset</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li>}</li></ul></code>
+        <code class="highlight"><ul class="code" style="padding-left:42px"><li><span class="keyword operator ts">input</span> <span class="identifier">LogFilter</span> {</li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Matches all the logs specified in the log level list</span></span></li><li><span class="tab"><span class="meta">logLevel</span>: [<a class="support type" href="loglevel.doc.html">LogLevel</a>!]</span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Matches all the logs logged since a certain timestamp</span></span></li><li><span class="tab"><span class="meta">logsSince</span>: <a class="support type" href="date.doc.html">Date</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Matches all the logs logged before a certain timestamp</span></span></li><li><span class="tab"><span class="meta">logsBefore</span>: <a class="support type" href="date.doc.html">Date</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Maximum number of log objects to be fetched per query</span></span></li><li><span class="tab"><span class="meta">limit</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li><span class="tab"><li><span class="tab"><span class="comment line">#   Number of items to skip while matching</span></span></li><li><span class="tab"><span class="meta">offset</span>: <a class="support type" href="int.doc.html">Int</a></span></li></span></li><li>}</li></ul></code>
     </div>
 </section>
 <section>
