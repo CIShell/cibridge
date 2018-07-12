@@ -2,9 +2,22 @@
 
 <a href="https://app.zenhub.com/workspace/o/CIShell/cibridge"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
 
-## Work In Progress
+[![Build Status](https://travis-ci.com/CIShell/cibridge.svg?branch=develop)](https://travis-ci.com/CIShell/cibridge)
 
-This repo is a work in progress. Come back later.
+## Build Instructions
+
+This repository is built using maven and npm.
+
+To build this repository for Java, just run:
+```
+mvn clean install
+```
+
+To build this repository for JavaScript, just run:
+```
+npm install
+npm run test-graphdoc-build
+```
 
 ## Vision
 
