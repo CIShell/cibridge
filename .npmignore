@@ -1,0 +1,12 @@
+src/main
+docs/
+pom.xml
+
+.travis.*
+travis.log
+
+# Java
+target/
+.classpath
+.project
+.settings/

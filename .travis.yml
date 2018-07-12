@@ -1,11 +1,28 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 sudo: false
+env:
+- NODE_VERSION=8
 cache:
   directories:
-    - $HOME/.m2
-install: 
-  - cp .travis.settings.xml $HOME/.m2/settings.xml
-script: 
-  - mvn clean deploy
+  - "$HOME/.m2"
+before_install:
+- nvm install $NODE_VERSION
+install:
+- cp .travis.settings.xml $HOME/.m2/settings.xml
+before_script:
+- npm install
+- mvn install
+script:
+- npm test-graphdoc-build
+- mvn deploy
+
+deploy:
+  provider: npm
+  email: bherr@indiana.edu
+  api_key:
+    secure: uIdAosBW9zN12zW+OGWLOlBLBBiYpQGLbZYqRW4YEylnSVmKwsUk2BLV9X4St5XEYrAdGCw+7FDyciXDtc6ojSmKrCN3qApqSmT+UyD1vr+dMv3nS5anNuwUSXOBll2JrckOYBXOC/KtcyJouPEAj1LwlrOUvW3QX3K5LpNjnStdfwoWiO8SMDlJtlqeh8DN0jrbk4Aaow44vmcE6w+n1zNA5Urcgy9IPUPmoH1Y2M0A2ipjZ7rC2hxPT+VkC1skbWtX6+6HQNOXxUDdZPsmTJXBvc99axKSU3sXmeZSVzoeBKrtPDVFgxsNrwG4q2uLFOxah9qvjV80y8O2VCueA+whBEca7bX8bI0kL7RK5k/RmQYCk4MwlGUCEBy/zvTY/fdxt1nEo36HvfjNErzgzWNS5pMkr/84LOZu7u0YsmqMVypu5lUOfcAp0cJtyQUk/ulZIZZo32yw+A88LGQ1324OdNEcpJjqnEB13Eq652Umd3WOhY+DvnpH/ImwRsxy/8tdY67sppErFEeDUJRSom84sF6cTSU/b2zlShBIuIZNjCn/Z1zxMMxDgIavaSrdvrnAXCb9VWayNv2OxAWgDO4ukf05lKVKYxJM7kwApZIcFz7+S80MIsFWYGt6St65iuGaRak+Yq2EmjaIwOWl/6LfeC9exngyM+6p+iyFDyo=
+  on:
+    tags: true
+    repo: CIShell/cibridge
