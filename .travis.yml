@@ -15,7 +15,7 @@ before_script:
 - npm install
 - mvn install
 script:
-- npm test-graphdoc-build
+- npm run test-graphdoc-build
 - mvn deploy
 
 deploy:
