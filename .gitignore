@@ -1,3 +1,9 @@
+# Java ignores
+target/
+.classpath
+.project
+.settings/
+
 # Logs
 logs
 *.log

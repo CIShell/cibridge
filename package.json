@@ -4,7 +4,7 @@
   "description": "Cyberinfrastructure Bridge is a GraphQL API for the integration and utilization of datasets, algorithms, tools, and computing resources. AKA CIShell for the Web.",
   "main": "index.js",
   "types": "index.d.ts",
-  "schema": "cibridge-schema_VERSION-draft.graphqls",
+  "schema": "cibridge-schema.graphqls",
   "scripts": {
     "build": "node src/build-schema",
     "graphdoc": "graphdoc --force",
