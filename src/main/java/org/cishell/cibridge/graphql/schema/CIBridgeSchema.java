@@ -1,4 +1,4 @@
-package org.cishell.cibridge.schema;
+package org.cishell.cibridge.graphql.schema;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
