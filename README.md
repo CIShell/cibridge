@@ -49,3 +49,11 @@ Rough timelines created at the start of the project outlining some of the hard(i
 
 *   2018-05-15 - Interns' First Day
 *   2018-08-07 - Interns' Last Day
+
+## Build Infrastructure
+
+Build infrastructure for CIShell and Sci2 generously provided by the following open source patrons:
+
+[![GitHub](https://cishell.github.io/images/GitHub_Logo.png)](https://github.com/CIShell/)
+[![Travis CI](https://cishell.github.io/images/TravisCI-Full-Color.png)](https://travis-ci.com/CIShell/)
+[![JFrog Artifactory](https://cishell.github.io/images/Powered-by-artifactory_03.png)](https://cishell.jfrog.io)
