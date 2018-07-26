@@ -346,6 +346,9 @@ enum AlgorithmState {
 	# The algorithm encountered error during the run
 	ERRORED
 
+	# The algorithm finished executing
+	FINISHED
+
 	# The algorithm is created and waiting to be scheduled
 	IDLE
 
