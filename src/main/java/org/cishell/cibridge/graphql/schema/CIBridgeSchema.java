@@ -6,7 +6,7 @@ import java.io.Reader;
 
 
 public class CIBridgeSchema {
-    public static final String schemaString = CIBridgeSchema.entryToString("/cibridge-schema.graphqls");
+    public static String schemaString = CIBridgeSchema.entryToString("/cibridge-schema.graphqls");
 
     private static String entryToString(String entryPath) {
         try {
