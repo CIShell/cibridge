@@ -27,7 +27,7 @@ type Data {
 	isModified: Boolean
 
 	# Other metadata information related to the data
-	properties: [Property!]
+	otherProperties: [Property!]
 }
 
 # Paginated Algorithm Definition Query Results
@@ -80,7 +80,7 @@ input DataProperties {
 	type: DataType
 
 	# Other metadata information related to the data
-	properties: [PropertyInput!]
+	otherProperties: [PropertyInput!]
 
 	# Maximum number of items to fetch while filtering
 	limit: Int
