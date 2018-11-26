@@ -57,6 +57,12 @@ input DataFilter {
 
 	# A list of key/value pairs to match on in the algorithm metadata
 	properties: [PropertyInput]
+
+    # Maximum number of items to fetch while filtering
+    limit: Int
+
+    # Number of items to skip while matching
+    offset: Int
 }
 
 # Input type for uploading new data or updating existing ones
@@ -81,12 +87,6 @@ input DataProperties {
 
 	# Other metadata information related to the data
 	otherProperties: [PropertyInput!]
-
-	# Maximum number of items to fetch while filtering
-	limit: Int
-
-	# Number of items to skip while matching
-	offset: Int
 }
 `;
 
