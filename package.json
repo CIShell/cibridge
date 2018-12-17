@@ -5,6 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "schema": "cibridge-schema.graphqls",
+  "schemaProviderJavaClass": "src/main/java/org/cishell/cibridge/graphql/schema/CIBridgeSchema.java",
   "scripts": {
     "build": "node src/build-schema",
     "graphdoc": "graphdoc --force",
