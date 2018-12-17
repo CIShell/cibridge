@@ -8,7 +8,7 @@ const schema = typeDefs.split('\n').filter(s => s.trim().length > 0).map((s) => 
 const schemaProviderJavaClass = `package org.cishell.cibridge.graphql.schema;
 
 public class CIBridgeSchema {
-    public static String SCHEMA_STRING =
+    public static final String SCHEMA_STRING =
 ${schema};
 }
 `;
