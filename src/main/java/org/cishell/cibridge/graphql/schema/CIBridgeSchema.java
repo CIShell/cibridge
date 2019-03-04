@@ -1,7 +1,7 @@
 package org.cishell.cibridge.graphql.schema;
 
 public class CIBridgeSchema {
-    public static String SCHEMA_STRING =
+    public static final String SCHEMA_STRING =
         "# scalar types\n" +
         "# Identifier for the given object\n" +
         "scalar ID\n" +
@@ -29,9 +29,9 @@ public class CIBridgeSchema {
         "	# Validates the given data that is proposed to be given to the algorithm\n" +
         "	validateData(algorithmDefinitionId: ID!, dataIds: [ID]!): String\n" +
         "	# Determines the input format from the referenced data and 	finds the chain of converter algorithms to convert the data to the specified output format\n" +
-        "	findConverters(dataId: ID!, outFormat: String!): [AlgorithmInstance!]!\n" +
+        "	findConverters(dataId: ID!, outFormat: String!): [AlgorithmDefinition!]!\n" +
         "	# Find the chain of converter algorithms to convert data from given input format to given output format\n" +
-        "	findConvertersByFormat(inFormat: String!, outFormat: String!): [AlgorithmInstance!]!\n" +
+        "	findConvertersByFormat(inFormat: String!, outFormat: String!): [AlgorithmDefinition!]!\n" +
         "	# Returns references for all the data objects that matches the given filter\n" +
         "	getData(filter: DataFilter): DataQueryResults!\n" +
         "	# Downloads the data associated with the given data reference as a file\n" +

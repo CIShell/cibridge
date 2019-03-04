@@ -1,10 +1,10 @@
 const queries = `
 	# Determines the input format from the referenced data and \
 	finds the chain of converter algorithms to convert the data to the specified output format
-	findConverters(dataId: ID!, outFormat: String!): [AlgorithmInstance!]!
+	findConverters(dataId: ID!, outFormat: String!): [AlgorithmDefinition!]!
 
 	# Find the chain of converter algorithms to convert data from given input format to given output format
-	findConvertersByFormat(inFormat: String!, outFormat: String!): [AlgorithmInstance!]!
+	findConvertersByFormat(inFormat: String!, outFormat: String!): [AlgorithmDefinition!]!
 `;
 
 const mutations = `
