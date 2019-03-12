@@ -28,9 +28,6 @@ type ParameterDefinition {
 	# The default value. A default is an array of String objects
 	default: String
 
-	# Is this attribute required or not?
-	required: Boolean!
-
 	# Options for the dropdown boxes
 	options: [Property!]
 }
