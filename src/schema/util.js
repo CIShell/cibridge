@@ -25,8 +25,8 @@ type ParameterDefinition {
 	# cardinality of values (a single value, an array or a list) the attribute can have
 	cardinality: Int!
 
-	# The default value. A default is an array of String objects
-	default: String
+	# The default values the attribute can take. A default values are an array of String objects
+	defaultValues: String
 
 	# Options for the dropdown boxes
 	options: [Property!]
