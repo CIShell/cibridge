@@ -6,6 +6,9 @@ type Property {
 
 	# Value mapped to the key. The data type for the field is left for the user to decide
 	value: Value!
+
+	# Type of attribute the property stores eg. integer, boolean, etc.
+	attributeType: AttributeType
 }
 
 # Definition of the attributes for the user entered parameters which includes name, type and options for dropdown boxes
@@ -41,6 +44,9 @@ input PropertyInput {
 
 	# Value mapped to the key. The data type for the field is left for the user to decide
 	value: Value!
+
+	# Type of attribute the property stores eg. integer, boolean, etc.
+    attributeType: AttributeType
 }
 `;
 

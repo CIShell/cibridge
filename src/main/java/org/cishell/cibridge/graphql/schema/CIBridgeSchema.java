@@ -471,6 +471,8 @@ public class CIBridgeSchema {
         "	key: String!\n" +
         "	# Value mapped to the key. The data type for the field is left for the user to decide\n" +
         "	value: Value!\n" +
+        "	# Type of attribute the property stores eg. integer, boolean, etc.\n" +
+        "	attributeType: AttributeType\n" +
         "}\n" +
         "# Definition of the attributes for the user entered parameters which includes name, type and options for dropdown boxes\n" +
         "type ParameterDefinition {\n" +
@@ -495,6 +497,8 @@ public class CIBridgeSchema {
         "	key: String!\n" +
         "	# Value mapped to the key. The data type for the field is left for the user to decide\n" +
         "	value: Value!\n" +
+        "	# Type of attribute the property stores eg. integer, boolean, etc.\n" +
+        "    attributeType: AttributeType\n" +
         "}\n" +
         "# Specifies several primitive data types for ParameterDefinition\n" +
         "enum AttributeType {\n" +
