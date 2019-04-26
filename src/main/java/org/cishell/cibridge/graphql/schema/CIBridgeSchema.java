@@ -482,6 +482,10 @@ public class CIBridgeSchema {
         "	description: String!\n" +
         "	# Type of the attribute\n" +
         "	type: AttributeType!\n" +
+        "	# cardinality of values (a single value, an array or a list) the attribute can have\n" +
+        "	cardinality: Int!\n" +
+        "	# The default values the attribute can take. A default values are an array of String objects\n" +
+        "	defaultValues: String\n" +
         "	# Options for the dropdown boxes\n" +
         "	options: [Property!]\n" +
         "}\n" +
