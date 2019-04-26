@@ -9,7 +9,7 @@
   "scripts": {
     "build": "node src/build-schema",
     "graphdoc": "graphdoc --force",
-    "lint": "node src/print-schema | graphql-schema-linter -s --comment-descriptions",
+    "lint": "node src/print-schema && graphql-schema-linter --comment-descriptions out.graphqls && rimraf out.graphqls",
     "test": "npm run lint",
     "test-graphdoc-build": "npm run test && npm run graphdoc && npm run build",
     "pre-commit": "npm run test-graphdoc-build"
@@ -43,6 +43,7 @@
   "devDependencies": {
     "@2fd/graphdoc": "^2.4.0",
     "graphql-schema-linter": "^0.1.6",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "rimraf": "^2.6.3"
   }
 }
